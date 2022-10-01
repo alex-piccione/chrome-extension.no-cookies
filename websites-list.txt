@@ -1,4 +1,4 @@
 # this is a comment
 www.geeksforgeeks.org/bash-script-read-user-input
-
+www.cyberciti.biz/faq/unix-linux-bash-script-check-if-variable-is-empty
 
