@@ -1,4 +1,4 @@
-# Chrome extension Annoyance Killer
+# Browser Annoyance Killer
 
 Chrome extension to remove cookies settings dialog
 ...and other annoyances.
