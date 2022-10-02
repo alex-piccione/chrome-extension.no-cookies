@@ -6,16 +6,18 @@ const report = {
   "failed remove": 0,
 }
 
+const log = (msg, arg) => console.log(`[No-Cookies] > ${msg}`, arg)
+
 chrome.runtime.onInstalled.addListener(() => {
-  console.log("onInstalled")
+  log("onInstalled")
 
   // setup the report
-  chrome.storage.sync.set({ report })
-  console.log(report)
+  chrome.storage.sync.set({ report: report, config: config })
+  log("store", { report: report, config: config })
 })
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  console.log("tab.onUpdated")
+  log("tab.onUpdated")
   //console.log("tab.url", tab.url)
 
   if (tab.active && changeInfo.status === "complete") {
@@ -26,7 +28,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     )
       return undefined
 
-    console.log("tab.onUpdated - execute script")
+    log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
       //func: <your function>, // cannot reference object that are external to the passed function

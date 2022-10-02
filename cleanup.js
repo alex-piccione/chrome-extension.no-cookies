@@ -10,7 +10,13 @@
 //  .then(response => response.json()) // file contains json
 //  .then(json => console.log(json))
 
-const log = msg => console.log(`[No-Cookies] > ${msg}`)
+const log = (msg, arg) => console.log(`[No-Cookies] > ${msg}`, arg)
+
+let config = {}
+const data = chrome.storage.sync.get(["config"], result => {
+  log("got config from storage:", result.config)
+  config = result.config
+})
 
 const removeElement = (site, query) => {
   const element = document.querySelector(query)
@@ -22,6 +28,8 @@ const removeElement = (site, query) => {
 const cleanIt = async site => {
   log(`CleanIt start for ${site}...`)
   // cannot access to chrome.tabs in content script
+
+  //log("config.query", config?.query)
 
   let query = "div.fc-consent-root"
   removeElement(site, query)
