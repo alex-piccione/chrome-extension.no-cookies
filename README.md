@@ -16,7 +16,7 @@ It works also in Maxthon, my main browser.
 
 ## I found a website that is not managed
 
-[TODO: add a link to open an issue]
+Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-cookies/issues/new?title=Suggest%20of%20website%20to%20manage&body=Hi,%20I%27d%20like%20that%20this%20extension%20manage%20this%20website:%20...%20Thank%20you.).
 
 ## Know bugs and defects
 
