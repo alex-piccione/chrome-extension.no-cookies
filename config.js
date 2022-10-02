@@ -39,6 +39,8 @@ export default {
           subject: "cookies",
           description: "Reset the web page scrolling functionality",
           type: "restore scrolling",
+          //on: ["html", "body"],
+          repeat: "3 times, every 500 ms",
         },
       ],
     },

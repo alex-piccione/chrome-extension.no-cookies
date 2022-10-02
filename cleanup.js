@@ -9,14 +9,6 @@ const log = (msg, arg) => console.log(`[No-Cookies] ${msg}`, arg)
 var counter = 1
 log("counter", counter++)
 
-/*
-let config = {}
-const data = chrome.storage.sync.get(["config"], result => {
-  log("got config from storage:", result.config)
-  config = result.config
-})
-*/
-
 const getConfig = async () =>
   new Promise((resolve, reject) => {
     chrome.storage.sync.get(["config"], result => {
@@ -32,7 +24,7 @@ const removeElement = (site, query) => {
     log(`Cannot remove element "${query}" because cannot find it in ${site}.`)
 }
 
-const restoreScrolling = site => {
+const restoreScrolling = (siteUrl, repeat, count = 0) => {
   log("document.html.style.ovefflow", document.html?.style?.ovefflow)
   log("document.body.style.ovefflow", document.body?.style?.ovefflow)
   // document.html is undefined (www.aranzulla.it)
@@ -41,6 +33,11 @@ const restoreScrolling = site => {
   //  document.html.style.ovefflow = "inherited"
   //if (document.body.style?.ovefflow === "hidden")
   //  document.body.style.ovefflow = "inherited"
+
+  if (++count < repeat.times) {
+    log(`repeat restoreScrolling ${count}`)
+    setTimeout(() => restoreScrolling(siteUrl, repeat, count), repeat.delay)
+  }
 }
 
 const cleanIt = config => {
@@ -51,9 +48,29 @@ const cleanIt = config => {
   const site = config.sites.find(s => s.url === siteUrl)
   site?.actions?.forEach(action => {
     log(`Apply action for "${action.subject}": "${action.description}"`)
+
+    const repeat = { times: 0, delay: 0 }
+    try {
+      if (action.repeat) {
+        //log("parse repeat")
+        const regex = "([\\d]*) times[,\\s]*every[\\s]([\\d]*)[\\s]*ms"
+        //repeatString = "12 times, every 500 ms"
+        const matches = new RegExp(regex).exec(action.repeat)
+        //log("matches", matches)
+        repeat.times = parseInt(matches[1])
+        repeat.delay = matches.length > 2 ? parseInt(matches[2]) : 0
+        //log("repeat", repeat)
+      }
+    } catch (err) {
+      console.error(
+        `Failed to parse repeat string "${action.repeatString}". ${err}`
+      )
+    }
+
     if (action.type == "remove element") {
       removeElement(siteUrl, action.querySelector)
-    } else if (action.type === "restore scrolling") restoreScrolling(siteUrl)
+    } else if (action.type === "restore scrolling")
+      restoreScrolling(siteUrl, repeat)
   })
 }
 
