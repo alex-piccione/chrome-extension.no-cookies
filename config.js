@@ -12,7 +12,6 @@ export default {
           description: 'Remove element <div class="fc-consent-root">',
           type: "remove element",
           querySelector: "div.fc-consent-root",
-          delay: 0,
         },
       ],
     },
@@ -24,7 +23,17 @@ export default {
           description: 'Remove element <div id="CybotCookiebotDialog"',
           type: "remove element",
           querySelector: "div#CybotCookiebotDialog",
-          delay: 0,
+        },
+      ],
+    },
+    {
+      url: "www.aranzulla.it",
+      actions: [
+        {
+          subject: "cookies",
+          description: 'Remove element <div id="iubenda-cs-banner"',
+          type: "remove element",
+          querySelector: "div#iubenda-cs-banner",
         },
       ],
     },
