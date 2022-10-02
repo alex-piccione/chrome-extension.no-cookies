@@ -1,4 +1,4 @@
-const actionTypes = ["remove element"]
+const actionTypes = ["remove element", "restore scrolling"]
 const actionSubjects = ["cookies", "notification", "user signup"]
 
 export default {
@@ -34,6 +34,11 @@ export default {
           description: 'Remove element <div id="iubenda-cs-banner"',
           type: "remove element",
           querySelector: "div#iubenda-cs-banner",
+        },
+        {
+          subject: "cookies",
+          description: "Reset the web page scrolling functionality",
+          type: "restore scrolling",
         },
       ],
     },
