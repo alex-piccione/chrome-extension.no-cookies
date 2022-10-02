@@ -1,9 +1,3 @@
-// doesn't work: require is not defined
-//const configFile = require("./wesites.config.json")
-//console.log(configFile)
-
-//const remote_url = "https://github.com/alex-piccione/chrome-extension.no-cookies/blob/feature/add-basic-stuff/wesites.config.json"
-
 //url = chrome.runtime.getURL("./wesites.config.json")
 
 //fetch(url)
@@ -11,14 +5,6 @@
 //  .then(json => console.log(json))
 
 const log = (msg, arg) => console.log(`[No-Cookies] ${msg}`, arg)
-
-/*
-let config = {}
-const data = chrome.storage.sync.get(["config"], result => {
-  log("got config from storage:", result.config)
-  config = result.config
-})
-*/
 
 const getConfig = async () =>
   new Promise((resolve, reject) => {
