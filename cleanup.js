@@ -10,18 +10,23 @@
 //  .then(response => response.json()) // file contains json
 //  .then(json => console.log(json))
 
-const removeElement = query => {
+const log = msg => console.log(`[No-Cookies] > ${msg}`)
+
+const removeElement = (site, query) => {
   const element = document.querySelector(query)
   if (element) element.remove()
-  else console.error(`Cannot remove element "${query}" because cannot find it.`)
+  else
+    log(`Cannot remove element "${query}" because cannot find it in ${site}.`)
 }
 
-const cleanIt = async () => {
-  console.log("CleanIt start...")
+const cleanIt = async site => {
+  log(`CleanIt start for ${site}...`)
   // cannot access to chrome.tabs in content script
 
   let query = "div.fc-consent-root"
-  removeElement(query)
+  removeElement(site, query)
 }
 
-cleanIt()
+const site = window?.location?.href
+
+cleanIt(site)
