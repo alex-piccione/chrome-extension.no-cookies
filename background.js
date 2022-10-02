@@ -1,32 +1,40 @@
-let website = "#3aa757"
+const report = {
+  initialization: 0,
+  "successful remove": 0,
+  "failed remove": 0,
+}
 
 chrome.runtime.onInstalled.addListener(() => {
   console.log("onInstalled")
-  //chrome.storage.sync.set({ website })
-  //console.log("Default background color set to %cgreen", `color: ${website}`)
+  // setup the report
+  chrome.storage.sync.set({ report })
+  console.log(report)
 })
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   console.log("tab.onUpdated")
+  //console.log("tab.url", tab.url)
+
+  // todo: skip urls like "chrome://" to avoid extension error
+  if (tab?.url?.startsWith("chrome://")) return undefined
 
   if (tab.active && changeInfo.status === "complete") {
-    /*chrome.tabs.executeScript({
-      code: "console.log('dsff');",
-    })*/
     console.log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      //func: logic.cleanIt, cannot referene object external to the passed function
-      // you can pass args
+      //func: <your function>, // cannot reference object that are external to the passed function
+      // you can pass args as workaround
       files: ["cleanup.js"],
     })
   }
-})
 
-/*
-chrome.tabs.executeScript(tab.id, { code: "console.log('dsff');" }, function() {
-  if (chrome.runtime.lastError) {
-       console.log("ERROR: " + chrome.runtime.lastError.message);
-  }
-});
-*/
+  /*chrome.tabs.executeScript(
+    tabid,
+    { code: "console.log('dsff');" },
+    function () {
+      if (chrome.runtime.lastError) {
+        console.log("ERROR: " + chrome.runtime.lastError.message)
+      }
+    }
+  )*/
+})
