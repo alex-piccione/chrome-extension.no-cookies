@@ -41,14 +41,12 @@ const cleanIt = config => {
   // cannot access to chrome.tabs in content script
 
   const site = config.sites.find(s => s.url === siteUrl)
-
-  if (site.rules) {
-    site.rules.forEach(rule => {
-      if (rule.type == "remove_element") {
-        removeElement(siteUrl, rule.querySelector)
-      }
-    })
-  }
+  site?.actions?.forEach(action => {
+    log(`Apply action for "${action.subject}": "${action.description}"`)
+    if (action.type == "remove element") {
+      removeElement(siteUrl, action.querySelector)
+    }
+  })
 }
 
 //log("Get config from storage...")
