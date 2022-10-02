@@ -13,12 +13,9 @@ const removeElement = query => {
       }*/
 
 const cleanIt = () => {
-  alert("CleanIt start...")
   console.log("CleanIt start...")
   let query = "div.fc-consent-root"
   removeElement(query)
-
-  alert("Done!")
 }
 
 cleanIt()
