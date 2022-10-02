@@ -12,6 +12,9 @@
 
 const log = (msg, arg) => console.log(`[No-Cookies] ${msg}`, arg)
 
+var counter = 1
+log("counter", counter++)
+
 /*
 let config = {}
 const data = chrome.storage.sync.get(["config"], result => {
@@ -35,6 +38,17 @@ const removeElement = (site, query) => {
     log(`Cannot remove element "${query}" because cannot find it in ${site}.`)
 }
 
+const restoreScrolling = site => {
+  log("document.html.style.ovefflow", document.html?.style?.ovefflow)
+  log("document.body.style.ovefflow", document.body?.style?.ovefflow)
+  // document.html is undefined (www.aranzulla.it)
+  window.document.body.parentNode.style.overflow = "scroll" // "inherit" doesn't work
+  window.document.body.style.overflow = "scroll"
+  //  document.html.style.ovefflow = "inherited"
+  //if (document.body.style?.ovefflow === "hidden")
+  //  document.body.style.ovefflow = "inherited"
+}
+
 const cleanIt = config => {
   const siteUrl = window?.location?.hostname
   log(`CleanIt start for ${siteUrl}...`)
@@ -45,7 +59,7 @@ const cleanIt = config => {
     log(`Apply action for "${action.subject}": "${action.description}"`)
     if (action.type == "remove element") {
       removeElement(siteUrl, action.querySelector)
-    }
+    } else if (action.type === "restore scrolling") restoreScrolling(siteUrl)
   })
 }
 
