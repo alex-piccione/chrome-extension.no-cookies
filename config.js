@@ -42,6 +42,17 @@ export default {
         },
       ],
     },
+    {
+      url: "www.letuelezioni.it",
+      actions: [
+        {
+          subject: "cookies",
+          description: 'Remove element <div id="pp"',
+          type: "remove element",
+          querySelector: "div#pp",
+        },
+      ],
+    },
   ],
 }
 

@@ -5,17 +5,8 @@
 //  .then(json => console.log(json))
 
 const log = (msg, arg) => console.log(`[No-Cookies] ${msg}`, arg)
-
 var counter = 1
 log("counter", counter++)
-
-/*
-let config = {}
-const data = chrome.storage.sync.get(["config"], result => {
-  log("got config from storage:", result.config)
-  config = result.config
-})
-*/
 
 const getConfig = async () =>
   new Promise((resolve, reject) => {
@@ -33,8 +24,8 @@ const removeElement = (site, query) => {
 }
 
 const restoreScrolling = site => {
-  log("document.html.style.ovefflow", document.html?.style?.ovefflow)
-  log("document.body.style.ovefflow", document.body?.style?.ovefflow)
+  log("document.html.style.overflow", document.html?.style?.overflow)
+  log("document.body.style.overflow", document.body?.style?.overflow)
   // document.html is undefined (www.aranzulla.it)
   window.document.body.parentNode.style.overflow = "scroll" // "inherit" doesn't work
   window.document.body.style.overflow = "scroll"
