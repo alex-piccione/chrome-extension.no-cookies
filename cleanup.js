@@ -4,11 +4,11 @@
 //  .then(response => response.json()) // file contains json
 //  .then(json => console.log(json))
 
-const log = (msg, arg) => console.log(`[No-Cookies] ${msg}`, arg)
+var log = (msg, arg) => console.log(`[No-Cookies] ${msg}`, arg)
 var counter = 1
 log("counter", counter++)
 
-const getConfig = async () =>
+var getConfig = async () =>
   new Promise((resolve, reject) => {
     chrome.storage.sync.get(["config"], result => {
       if (result.config) resolve(result.config)
@@ -16,11 +16,19 @@ const getConfig = async () =>
     })
   })
 
-const removeElement = (site, query) => {
+const removeElement = (site, query, repeat, count = 0) => {
   const element = document.querySelector(query)
   if (element) element.remove()
-  else
+  else {
     log(`Cannot remove element "${query}" because cannot find it in ${site}.`)
+    if (++count < repeat.times) {
+      log(`repeat removeElement ${count}`)
+      setTimeout(
+        () => removeElement(siteUrl, query, repeat, count),
+        repeat.delay
+      )
+    }
+  }
 }
 
 const restoreScrolling = (siteUrl, repeat, count = 0) => {
@@ -45,20 +53,21 @@ const cleanIt = config => {
   // cannot access to chrome.tabs in content script
 
   const site = config.sites.find(s => s.url === siteUrl)
+
+  if (!site?.actions) {
+    log("...nothing to do")
+  }
+
   site?.actions?.forEach(action => {
     log(`Apply action for "${action.subject}": "${action.description}"`)
 
     const repeat = { times: 0, delay: 0 }
     try {
       if (action.repeat) {
-        //log("parse repeat")
         const regex = "([\\d]*) times[,\\s]*every[\\s]([\\d]*)[\\s]*ms"
-        //repeatString = "12 times, every 500 ms"
         const matches = new RegExp(regex).exec(action.repeat)
-        //log("matches", matches)
         repeat.times = parseInt(matches[1])
         repeat.delay = matches.length > 2 ? parseInt(matches[2]) : 0
-        //log("repeat", repeat)
       }
     } catch (err) {
       console.error(
@@ -67,7 +76,7 @@ const cleanIt = config => {
     }
 
     if (action.type == "remove element") {
-      removeElement(siteUrl, action.querySelector)
+      removeElement(siteUrl, action.querySelector, repeat)
     } else if (action.type === "restore scrolling")
       restoreScrolling(siteUrl, repeat)
   })

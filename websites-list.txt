@@ -5,3 +5,4 @@ www.cyberciti.biz/faq/unix-linux-bash-script-check-if-variable-is-empty
 www.telegraph.co.uk/world-news/2022/09/30/russia-ukraine-news-live-annexed-regions-gas-putin
 www.aranzulla.it
 www.blablacar.it
+edition.cnn.com

@@ -63,6 +63,18 @@ export default {
           description: 'Remove element <div id="didomi-popup"',
           type: "remove element",
           querySelector: "div#didomi-popup",
+          repeat: "3 times, every 500 ms",
+        },
+      ],
+    },
+    {
+      url: "edition.cnn.com",
+      actions: [
+        {
+          subject: "cookies",
+          type: "remove element",
+          querySelector: "div#onetrust-consent-sdk",
+          //repeat: "3 times, every 500 ms",
         },
       ],
     },
