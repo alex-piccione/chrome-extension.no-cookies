@@ -23,3 +23,8 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 - Option page is showing not inherent info.
 - Not registered as official Chrome extension because still in initial stage of development
+
+## For developer
+
+Chrome extensions API reference: https://developer.chrome.com/docs/extensions/reference  
+Markdown emojis: https://github.com/markdown-templates/markdown-emojis
