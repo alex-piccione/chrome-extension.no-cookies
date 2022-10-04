@@ -55,6 +55,17 @@ export default {
         },
       ],
     },
+    {
+      url: "www.blablacar.it",
+      actions: [
+        {
+          subject: "cookies",
+          description: 'Remove element <div id="didomi-popup"',
+          type: "remove element",
+          querySelector: "div#didomi-popup",
+        },
+      ],
+    },
   ],
 }
 

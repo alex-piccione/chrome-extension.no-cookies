@@ -13,7 +13,8 @@ It works also in Maxthon, my main browser.
 | :ok:               | www.cyberciti.biz     | Partially done | Cookies removed but still shows up notification and sign-up dialog |
 | :ok:               | www.aranzulla.it      | Done           | Cookies, Scrolling (not easy to do)                                |
 | :heavy_check_mark: | www.letuelezioni.it   | Done           | Cookies                                                            |
-|                    | www.telegraph.co.uk   | Todo           |                                                                    |
+| :heavy_check_mark: | www.blablacar.it      | Done           |                                                                    |
+| :x:                | www.telegraph.co.uk   | Can't be done  | Requires subscription                                              |
 
 ## I found a website that is not managed
 
