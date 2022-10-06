@@ -52,6 +52,7 @@ export default {
           description: 'Remove element <div id="pp"',
           type: "remove element",
           querySelector: "div#pp",
+          repeat: "3 times, every 500 ms",
         },
       ],
     },
@@ -75,6 +76,16 @@ export default {
           type: "remove element",
           querySelector: "div#onetrust-consent-sdk",
           //repeat: "3 times, every 500 ms",
+        },
+      ],
+    },
+    {
+      url: "www.coindesk.com",
+      actions: [
+        {
+          subject: "cookies",
+          type: "remove element",
+          querySelector: "div#CybotCookiebotDialog",
         },
       ],
     },
