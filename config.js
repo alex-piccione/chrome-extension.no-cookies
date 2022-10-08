@@ -89,6 +89,16 @@ export default {
         },
       ],
     },
+    {
+      url: "en.tripadvisor.com",
+      actions: [
+        {
+          subject: "cookies",
+          type: "remove element",
+          querySelector: "div#onetrust-consent-sdk",
+        },
+      ],
+    },
   ],
 }
 

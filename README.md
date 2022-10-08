@@ -16,6 +16,7 @@ It works also in Maxthon, my main browser.
 | :heavy_check_mark: | www.blablacar.it      | Done           | Cookies                                                            |
 | :heavy_check_mark: | edition.cnn.com       | Done           | Cookies                                                            |
 | :heavy_check_mark: | www.coindesk.com      | Done           | Cookies                                                            |
+|                    | en.tripadvisor.com    | ...            | Cookies                                                            |
 
 ### Websites that we can't fix
 
