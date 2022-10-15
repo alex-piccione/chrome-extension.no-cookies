@@ -90,12 +90,43 @@ export default {
       ],
     },
     {
-      url: "en.tripadvisor.com",
+      url: "www.tripadvisor.com",
       actions: [
         {
           subject: "cookies",
           type: "remove element",
           querySelector: "div#onetrust-consent-sdk",
+          repeat: "5 times, every 500 ms",
+        },
+      ],
+    },
+    {
+      url: "itsmycode.com",
+      actions: [
+        {
+          subject: "cookies",
+          type: "remove element",
+          querySelector: "div#ez-cookie-dialog-wrapper",
+        },
+      ],
+    },
+    /*{
+      url: "www.timeanddate.com",
+      actions: [
+        {
+          subject: "cookies",
+          type: "remove element",
+          querySelector: "div#qc-cmp2-container",
+        },
+      ],
+    },*/
+    {
+      url: "forums.androidcentral.com",
+      actions: [
+        {
+          subject: "cookies",
+          type: "remove element",
+          querySelector: "div#qc-cmp2-container",
         },
       ],
     },

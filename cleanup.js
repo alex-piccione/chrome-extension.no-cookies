@@ -10,23 +10,20 @@ log("counter", counter++)
 
 var getConfig = async () =>
   new Promise((resolve, reject) => {
-    chrome.storage.sync.get(["config"], result => {
+    chrome.storage.sync.get(["config"], (result) => {
       if (result.config) resolve(result.config)
       else reject()
     })
   })
 
-const removeElement = (site, query, repeat, count = 0) => {
+const removeElement = (siteUrl, query, repeat, count = 0) => {
   const element = document.querySelector(query)
   if (element) element.remove()
   else {
-    log(`Cannot remove element "${query}" because cannot find it in ${site}.`)
+    log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
     if (++count < repeat.times) {
       log(`repeat removeElement ${count}`)
-      setTimeout(
-        () => removeElement(siteUrl, query, repeat, count),
-        repeat.delay
-      )
+      setTimeout(() => removeElement(siteUrl, query, repeat, count), repeat.delay)
     }
   }
 }
@@ -47,19 +44,19 @@ const restoreScrolling = (siteUrl, repeat, count = 0) => {
   }
 }
 
-const cleanIt = config => {
+const cleanIt = (config) => {
   const siteUrl = window?.location?.hostname
   log(`CleanIt start for ${siteUrl}...`)
   // cannot access to chrome.tabs in content script
 
-  const site = config.sites.find(s => s.url === siteUrl)
+  const site = config.sites.find((s) => s.url === siteUrl)
 
-  if (!site?.actions) {
+  /*if (!site?.actions) {
     log("...nothing to do")
-  }
+  }*/
 
-  site?.actions?.forEach(action => {
-    log(`Apply action for "${action.subject}": "${action.description}"`)
+  site?.actions?.forEach((action) => {
+    log(`Apply action for "${action.subject}": "${action?.description}"`)
 
     const repeat = { times: 0, delay: 0 }
     try {
@@ -70,15 +67,12 @@ const cleanIt = config => {
         repeat.delay = matches.length > 2 ? parseInt(matches[2]) : 0
       }
     } catch (err) {
-      console.error(
-        `Failed to parse repeat string "${action.repeatString}". ${err}`
-      )
+      console.error(`Failed to parse repeat string "${action.repeatString}". ${err}`)
     }
 
     if (action.type == "remove element") {
       removeElement(siteUrl, action.querySelector, repeat)
-    } else if (action.type === "restore scrolling")
-      restoreScrolling(siteUrl, repeat)
+    } else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
   })
 }
 
@@ -93,5 +87,5 @@ let promise = new Promise((resolve, reject) => {
 */
 
 getConfig()
-  .then(config => cleanIt(config))
-  .catch(err => console.error(`Failed to get config. ${err}`))
+  .then((config) => cleanIt(config))
+  .catch((err) => console.error(`Failed to get config. ${err}`))
