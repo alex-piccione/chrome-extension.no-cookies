@@ -1,0 +1,8 @@
+version: 1
+sites:
+  - www.geeksforgeeks.org:
+      removeElement: div.fc-consent-root
+  - stackify.com:
+      removeElement:
+        selector: div#CybotCookiebotDialog
+        repeat: 3 times every 100 ms

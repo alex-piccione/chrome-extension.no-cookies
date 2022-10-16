@@ -1,4 +1,5 @@
 import config from "./config.js"
+import load from "./yaml-loader.js"
 
 const report = {
   initialization: 0,
@@ -11,6 +12,11 @@ const _log = (msg, arg) => console.log(`[No-Cookies] > ${msg}`, arg)
 chrome.runtime.onInstalled.addListener(() => {
   _log("onInstalled")
 
+  _log("Config loading...")
+  const config__ = load().then((data) => {
+    _log(`Config loaded: ${data}`, data)
+    return data
+  })
   // setup the report
   chrome.storage.sync.set({ report: report, config: config })
   _log("store", { report: report, config: config })
@@ -22,11 +28,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
   if (tab.active && changeInfo.status === "complete") {
     // skip urls like "chrome://" to avoid extension error
-    if (
-      tab.url?.startsWith("chrome://") ||
-      tab.url?.startsWith("mx://extensions/")
-    )
-      return undefined
+    if (tab.url?.startsWith("chrome://") || tab.url?.startsWith("mx://extensions/")) return undefined
 
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({

@@ -11,6 +11,7 @@
   },
   "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "host_permissions": ["http://*/", "https://*/"],
+
   "options_page": "options.html",
   "background": {
     "service_worker": "background.js",
