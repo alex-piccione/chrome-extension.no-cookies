@@ -51,10 +51,6 @@ const cleanIt = (config) => {
 
   const site = config.sites.find((s) => s.url === siteUrl)
 
-  /*if (!site?.actions) {
-    log("...nothing to do")
-  }*/
-
   site?.actions?.forEach((action) => {
     log(`Apply action for "${action.subject}": "${action?.description}"`)
 
