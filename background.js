@@ -1,4 +1,5 @@
-import config from "./config.js"
+import cleaner from "./cleaner.js"
+import config from "./data/websites.js"
 
 const report = {
   initialization: 0,
@@ -18,22 +19,19 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   _log("tab.onUpdated")
-  //console.log("tab.url", tab.url)
 
   if (tab.active && changeInfo.status === "complete") {
     // skip urls like "chrome://" to avoid extension error
-    if (
-      tab.url?.startsWith("chrome://") ||
-      tab.url?.startsWith("mx://extensions/")
-    )
-      return undefined
+    if (tab.url?.startsWith("chrome://") || tab.url?.startsWith("mx://extensions/")) return undefined
 
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
       //func: <your function>, // cannot reference object that are external to the passed function
       // you can pass args as workaround
-      files: ["cleanup.js"],
+      //files: ["cleanup.js"],
+      func: cleaner.clean,
+      args: [config],
     })
   }
 

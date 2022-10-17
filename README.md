@@ -40,3 +40,11 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 Chrome extensions API reference: https://developer.chrome.com/docs/extensions/reference  
 Markdown emojis: https://github.com/markdown-templates/markdown-emojis
+
+### Issue: reload of cleanup.js
+
+Reload of cleanup.js multiple times causes this error:
+
+> Uncaught SyntaxError: Identifier 'removeElement' has already been declared
+
+This problem exists because the cleanup.js file is loaded at each "onUpdated" event of the browser a _tab_.

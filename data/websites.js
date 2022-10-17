@@ -3,6 +3,7 @@ const actionSubjects = ["cookies", "notification", "user signup"]
 
 export default {
   version: "1",
+  logPattern: "[XXX] {msg}",
   sites: [
     {
       url: "www.geeksforgeeks.org",
