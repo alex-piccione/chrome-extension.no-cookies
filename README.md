@@ -8,7 +8,7 @@ It works also in Maxthon, my main browser.
 ## Websites where we do something or will do something
 
 |                    | Site                      | Status         | Note                                                               |
-| ------------------ | ------------------------- | -------------- | ------------------------------------------------------------------ | --- |
+| ------------------ | ------------------------- | -------------- | ------------------------------------------------------------------ |
 | :heavy_check_mark: | www.geeksforgeeks.org     | Done           | Cookies                                                            |
 | :ok:               | www.cyberciti.biz         | Partially done | Cookies removed but still shows up notification and sign-up dialog |
 | :ok:               | www.aranzulla.it          | Done           | Cookies, Scrolling (not easy to do)                                |
@@ -17,8 +17,8 @@ It works also in Maxthon, my main browser.
 | :heavy_check_mark: | edition.cnn.com           | Done           | Cookies                                                            |
 | :heavy_check_mark: | www.coindesk.com          | Done           | Cookies                                                            |
 | :heavy_check_mark: | www.tripadvisor.com       | Done           | Cookies                                                            |
-| :heavy_check_mark: | itsmycode.com             | Done           | Cookies                                                            |     |
-| :heavy_check_mark: | forums.androidcentral.com | Done           | Cookies                                                            |     |
+| :heavy_check_mark: | itsmycode.com             | Done           | Cookies                                                            |
+| :heavy_check_mark: | forums.androidcentral.com | Done           | Cookies                                                            |
 
 ### Websites that we can't fix
 
@@ -40,11 +40,3 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 Chrome extensions API reference: https://developer.chrome.com/docs/extensions/reference  
 Markdown emojis: https://github.com/markdown-templates/markdown-emojis
-
-### Issue: reload of cleanup.js
-
-Reload of cleanup.js multiple times causes this error:
-
-> Uncaught SyntaxError: Identifier 'removeElement' has already been declared
-
-This problem exists because the cleanup.js file is loaded at each "onUpdated" event of the browser a _tab_.
