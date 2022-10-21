@@ -1,3 +1,4 @@
+import cleaner from "./cleaner.js"
 import config from "./data/websites.js"
 
 const report = {
@@ -26,6 +27,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
+      func: cleaner.clean,
       args: [config],
     })
   }
