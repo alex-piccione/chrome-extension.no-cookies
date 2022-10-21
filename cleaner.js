@@ -1,8 +1,4 @@
 const cleaner = {
-  //getProperty: (data) {
-  //  data.ha
-  //}
-
   clean: (config) => {
     const log = (msg) => console.log(config.logPattern.replace("{msg}", `${msg}`))
 
