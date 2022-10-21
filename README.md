@@ -8,7 +8,7 @@ It works also in Maxthon, my main browser.
 ## Websites where we do something or will do something
 
 |                    | Site                      | Status         | Note                                                               |
-| ------------------ | ------------------------- | -------------- | ------------------------------------------------------------------ | --- |
+| ------------------ | ------------------------- | -------------- | ------------------------------------------------------------------ |
 | :heavy_check_mark: | www.geeksforgeeks.org     | Done           | Cookies                                                            |
 | :ok:               | www.cyberciti.biz         | Partially done | Cookies removed but still shows up notification and sign-up dialog |
 | :ok:               | www.aranzulla.it          | Done           | Cookies, Scrolling (not easy to do)                                |
@@ -17,8 +17,9 @@ It works also in Maxthon, my main browser.
 | :heavy_check_mark: | edition.cnn.com           | Done           | Cookies                                                            |
 | :heavy_check_mark: | www.coindesk.com          | Done           | Cookies                                                            |
 | :heavy_check_mark: | www.tripadvisor.com       | Done           | Cookies                                                            |
-| :heavy_check_mark: | itsmycode.com             | Done           | Cookies                                                            |     |
-| :heavy_check_mark: | forums.androidcentral.com | Done           | Cookies                                                            |     |
+| :heavy_check_mark: | itsmycode.com             | Done           | Cookies                                                            |
+| :heavy_check_mark: | forums.androidcentral.com | Done           | Cookies                                                            |
+| :heavy_check_mark  | www.hsbc.co.uk            | Done           | Cookies                                                            |
 
 ### Websites that we can't fix
 
