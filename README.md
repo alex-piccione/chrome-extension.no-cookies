@@ -19,6 +19,7 @@ It works also in Maxthon, my main browser.
 | :heavy_check_mark: | www.tripadvisor.com       | Done           | Cookies                                                            |
 | :heavy_check_mark: | itsmycode.com             | Done           | Cookies                                                            |
 | :heavy_check_mark: | forums.androidcentral.com | Done           | Cookies                                                            |
+| :heavy_check_mark  | www.hsbc.co.uk            | Done           | Cookies                                                            |
 
 ### Websites that we can't fix
 

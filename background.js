@@ -1,4 +1,3 @@
-import cleaner from "./cleaner.js"
 import config from "./data/websites.js"
 
 const report = {
@@ -27,21 +26,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      //func: <your function>, // cannot reference object that are external to the passed function
-      // you can pass args as workaround
-      //files: ["cleanup.js"],
-      func: cleaner.clean,
       args: [config],
     })
   }
-
-  /*chrome.tabs.executeScript(
-    tabid,
-    { code: "console.log('dsff');" },
-    function () {
-      if (chrome.runtime.lastError) {
-        console.log("ERROR: " + chrome.runtime.lastError.message)
-      }
-    }
-  )*/
 })
