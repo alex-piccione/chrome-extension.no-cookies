@@ -1,9 +1,6 @@
-const actionTypes = ["remove element", "restore scrolling"]
-const actionSubjects = ["cookies", "notification", "user signup"]
-
 export default {
   version: "1",
-  logPattern: "[XXX] {msg}",
+  logPattern: "[FREE] {msg}",
   sites: [
     {
       url: "www.geeksforgeeks.org",
