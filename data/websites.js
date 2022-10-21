@@ -17,7 +17,6 @@ export default {
       url: "stackify.com",
       actions: [
         {
-          subject: "cookies",
           description: 'Remove element <div id="CybotCookiebotDialog"',
           type: "remove element",
           querySelector: "div#CybotCookiebotDialog",
@@ -28,13 +27,11 @@ export default {
       url: "www.aranzulla.it",
       actions: [
         {
-          subject: "cookies",
           description: 'Remove element <div id="iubenda-cs-banner"',
           type: "remove element",
           querySelector: "div#iubenda-cs-banner",
         },
         {
-          subject: "cookies",
           description: "Reset the web page scrolling functionality",
           type: "restore scrolling",
           //on: ["html", "body"],
@@ -46,7 +43,6 @@ export default {
       url: "www.letuelezioni.it",
       actions: [
         {
-          subject: "cookies",
           description: 'Remove element <div id="pp"',
           type: "remove element",
           querySelector: "div#pp",
@@ -58,7 +54,6 @@ export default {
       url: "www.blablacar.it",
       actions: [
         {
-          subject: "cookies",
           description: 'Remove element <div id="didomi-popup"',
           type: "remove element",
           querySelector: "div#didomi-popup",
@@ -70,7 +65,6 @@ export default {
       url: "edition.cnn.com",
       actions: [
         {
-          subject: "cookies",
           type: "remove element",
           querySelector: "div#onetrust-consent-sdk",
           //repeat: "3 times, every 500 ms",
@@ -81,7 +75,6 @@ export default {
       url: "www.coindesk.com",
       actions: [
         {
-          subject: "cookies",
           type: "remove element",
           querySelector: "div#CybotCookiebotDialog",
         },
@@ -91,7 +84,6 @@ export default {
       url: "www.tripadvisor.com",
       actions: [
         {
-          subject: "cookies",
           type: "remove element",
           querySelector: "div#onetrust-consent-sdk",
           repeat: "5 times, every 500 ms",
@@ -102,7 +94,6 @@ export default {
       url: "itsmycode.com",
       actions: [
         {
-          subject: "cookies",
           type: "remove element",
           querySelector: "div#ez-cookie-dialog-wrapper",
         },
@@ -112,7 +103,6 @@ export default {
       url: "www.timeanddate.com",
       actions: [
         {
-          subject: "cookies",
           type: "remove element",
           querySelector: "div#qc-cmp2-container",
         },
@@ -122,14 +112,14 @@ export default {
       url: "forums.androidcentral.com",
       actions: [
         {
-          subject: "cookies",
           type: "remove element",
           querySelector: "div#qc-cmp2-container",
         },
       ],
     },
+    {
+      url: "www.hsbc.co.uk",
+      actions: [{ remove_element: "div#__tealiumGDPRecModal", repeat: "2 times, every 300 ms" }],
+    },
   ],
 }
-
-// export gives an Extension Error
-//export default config

@@ -1,4 +1,8 @@
 const cleaner = {
+  //getProperty: (data) {
+  //  data.ha
+  //}
+
   clean: (config) => {
     const log = (msg) => console.log(config.logPattern.replace("{msg}", `${msg}`))
 
@@ -20,8 +24,6 @@ const cleaner = {
     const site = config.sites.find((s) => s.url === siteUrl)
 
     site?.actions?.forEach((action) => {
-      log(`Apply action for "${action.subject}": "${action?.description}"`)
-
       const repeat = { times: 0, delay: 0 }
       try {
         if (action.repeat) {
@@ -34,7 +36,9 @@ const cleaner = {
         console.error(`Failed to parse repeat string "${action.repeatString}". ${err}`)
       }
 
-      if (action.type == "remove element") {
+      if (action.remove_element) {
+        removeElement(siteUrl, action.remove_element, repeat)
+      } else if (action.type == "remove element") {
         removeElement(siteUrl, action.querySelector, repeat)
       } else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
     })
