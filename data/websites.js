@@ -1,17 +1,10 @@
 export default {
   version: "1",
-  logPattern: "[FREE] {msg}",
+  logPattern: "[FREE!] {msg}",
   sites: [
     {
       url: "www.geeksforgeeks.org",
-      actions: [
-        {
-          subject: "cookies",
-          description: 'Remove element <div class="fc-consent-root">',
-          type: "remove element",
-          querySelector: "div.fc-consent-root",
-        },
-      ],
+      actions: [{ remove_element: "div.fc-consent-root" }],
     },
     {
       url: "stackify.com",
@@ -52,14 +45,7 @@ export default {
     },
     {
       url: "www.blablacar.it",
-      actions: [
-        {
-          description: 'Remove element <div id="didomi-popup"',
-          type: "remove element",
-          querySelector: "div#didomi-popup",
-          repeat: "3 times, every 500 ms",
-        },
-      ],
+      actions: [{ remove_element: "div#didomi-popup", repeat: "3 times, every 500 ms" }],
     },
     {
       url: "edition.cnn.com",
@@ -120,6 +106,22 @@ export default {
     {
       url: "www.hsbc.co.uk",
       actions: [{ remove_element: "div#__tealiumGDPRecModal", repeat: "2 times, every 300 ms" }],
+    },
+    {
+      url: "www.sitepoint.com",
+      actions: [{ remove_element: "div#qc-cmp2-container" }],
+    },
+    {
+      url: "appdividend.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
+    {
+      url: "www.spguides.com",
+      actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
+    },
+    {
+      url: "www.cyberciti.biz",
+      actions: [{ remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" }],
     },
   ],
 }
