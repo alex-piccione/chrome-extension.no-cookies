@@ -19,11 +19,7 @@ export default {
     {
       url: "www.aranzulla.it",
       actions: [
-        {
-          description: 'Remove element <div id="iubenda-cs-banner"',
-          type: "remove element",
-          querySelector: "div#iubenda-cs-banner",
-        },
+        { remove_element: "div#iubenda-cs-banner" },
         {
           description: "Reset the web page scrolling functionality",
           type: "restore scrolling",
@@ -34,14 +30,7 @@ export default {
     },
     {
       url: "www.letuelezioni.it",
-      actions: [
-        {
-          description: 'Remove element <div id="pp"',
-          type: "remove element",
-          querySelector: "div#pp",
-          repeat: "3 times, every 500 ms",
-        },
-      ],
+      actions: [{ remove_element: "div#pp", repeat: "3 times, every 500 ms" }],
     },
     {
       url: "www.blablacar.it",
@@ -59,31 +48,15 @@ export default {
     },
     {
       url: "www.coindesk.com",
-      actions: [
-        {
-          type: "remove element",
-          querySelector: "div#CybotCookiebotDialog",
-        },
-      ],
+      actions: [{ remove_element: "div#CybotCookiebotDialog" }],
     },
     {
       url: "www.tripadvisor.com",
-      actions: [
-        {
-          type: "remove element",
-          querySelector: "div#onetrust-consent-sdk",
-          repeat: "5 times, every 500 ms",
-        },
-      ],
+      actions: [{ remove_element: "div#onetrust-consent-sdk", repeat: "5 times, every 500 ms" }],
     },
     {
       url: "itsmycode.com",
-      actions: [
-        {
-          type: "remove element",
-          querySelector: "div#ez-cookie-dialog-wrapper",
-        },
-      ],
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     /*{
       url: "www.timeanddate.com",
@@ -96,12 +69,7 @@ export default {
     },*/
     {
       url: "forums.androidcentral.com",
-      actions: [
-        {
-          type: "remove element",
-          querySelector: "div#qc-cmp2-container",
-        },
-      ],
+      actions: [{ remove_element: "div#qc-cmp2-container" }],
     },
     {
       url: "www.hsbc.co.uk",
@@ -122,6 +90,17 @@ export default {
     {
       url: "www.cyberciti.biz",
       actions: [{ remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" }],
+    },
+    { 
+      url: "akashmittal.com", 
+      actions: [{ remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" },
+      {
+        description: "Reset the web page scrolling functionality",
+        type: "restore scrolling",
+        //on: ["html", "body"],
+        repeat: "3 times, every 500 ms",
+      },
+    ]
     },
   ],
 }
