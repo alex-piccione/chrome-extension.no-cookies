@@ -147,5 +147,13 @@ export default {
       url: "forst.tax",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
+    {
+      url: "krispitech.com",
+      actions: [{ remove_element: "div.fc-consent-root" }],
+    },
+    {
+      url: "mashtips.com",
+      actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
+    },
   ],
 }
