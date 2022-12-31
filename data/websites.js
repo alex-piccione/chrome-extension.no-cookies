@@ -129,11 +129,15 @@ export default {
     },
     {
       url: "krispitech.com",
-      actions: [{ remove_element: "div.fc-consent-root" }],
+      actions: [{ remove_element: "div.fc-consent-root" }, { type: "restore scrolling" }],
     },
     {
       url: "mashtips.com",
       actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
+    },
+    {
+      url: "www.geeksforgeeks.org",
+      actions: [{ remove_element: "div.fc-consent-root" }],
     },
   ],
 }
