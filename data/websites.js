@@ -91,15 +91,53 @@ export default {
       url: "www.cyberciti.biz",
       actions: [{ remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" }],
     },
-    { 
-      url: "akashmittal.com", 
-      actions: [{ remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" },
-      {
-        description: "Reset the web page scrolling functionality",
-        type: "restore scrolling",
-        //on: ["html", "body"],
-        repeat: "3 times, every 500 ms",
-      }]
+    {
+      url: "akashmittal.com",
+      actions: [
+        { remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" },
+        {
+          description: "Reset the web page scrolling functionality",
+          type: "restore scrolling",
+          //on: ["html", "body"],
+          repeat: "3 times, every 500 ms",
+        },
+      ],
+    },
+    {
+      url: "www.pisos.com",
+      actions: [{ remove_element: "div#didomi-host" }, { remove_element: "div[style*='z-index']" }],
+    },
+    {
+      url: "linuxhint.com",
+      actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
+    },
+    {
+      url: "www.ryadel.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
+    {
+      url: "auth0.com",
+      actions: [{ remove_element: "div#onetrust-consent-sdk" }],
+    },
+    {
+      url: "www.corriere.it",
+      actions: [{ remove_element: "div.privacy-cor-wall" }],
+    },
+    {
+      url: "forst.tax",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
+    {
+      url: "krispitech.com",
+      actions: [{ remove_element: "div.fc-consent-root" }, { type: "restore scrolling" }],
+    },
+    {
+      url: "mashtips.com",
+      actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
+    },
+    {
+      url: "www.geeksforgeeks.org",
+      actions: [{ remove_element: "div.fc-consent-root" }],
     },
     {
       url: "www.koskila.net",
