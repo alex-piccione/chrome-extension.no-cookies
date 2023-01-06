@@ -99,8 +99,15 @@ export default {
         type: "restore scrolling",
         //on: ["html", "body"],
         repeat: "3 times, every 500 ms",
-      },
-    ]
+      }]
     },
+    {
+      url: "www.koskila.net",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper"}]
+    },
+    {
+      url: "csharp.hotexamples.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper"}]
+    }
   ],
 }
