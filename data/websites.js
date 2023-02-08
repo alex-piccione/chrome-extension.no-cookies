@@ -140,8 +140,16 @@ export default {
       actions: [{ remove_element: "div.fc-consent-root" }],
     },
     {
+      url: "www.tomshardware.com",
+      actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+    },
+    {
+      url: "www.techradar.com",
+      actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+    },
+    {
       url: "www.koskila.net",
-      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper"}]
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     {
       url: "csharp.hotexamples.com",
@@ -150,6 +158,14 @@ export default {
     {
       urL: "www.baeldung.com",
       actions: [ { remove_element: "div#qc-cmp2-container", repeat: "3 times, every 500 ms",}]
+    },
+    {
+      url: "www.thewindowsclub.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
+    {
+      url: "windowsloop.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     }
   ],
 }
