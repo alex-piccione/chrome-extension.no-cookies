@@ -139,5 +139,13 @@ export default {
       url: "www.geeksforgeeks.org",
       actions: [{ remove_element: "div.fc-consent-root" }],
     },
+    {
+      url: "www.tomshardware.com",
+      actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+    },
+    {
+      url: "www.techradar.com",
+      actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+    },
   ],
 }
