@@ -155,5 +155,13 @@ export default {
       url: "csharp.hotexamples.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
+    {
+      url: "www.thewindowsclub.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
+    {
+      url: "windowsloop.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
   ],
 }
