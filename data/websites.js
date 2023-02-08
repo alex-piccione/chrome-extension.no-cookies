@@ -147,5 +147,13 @@ export default {
       url: "www.techradar.com",
       actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
     },
+    {
+      url: "www.koskila.net",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
+    {
+      url: "csharp.hotexamples.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
   ],
 }
