@@ -153,7 +153,11 @@ export default {
     },
     {
       url: "csharp.hotexamples.com",
-      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper"}]
+    },
+    {
+      urL: "www.baeldung.com",
+      actions: [ { remove_element: "div#qc-cmp2-container", repeat: "3 times, every 500 ms",}]
     },
     {
       url: "www.thewindowsclub.com",
@@ -162,6 +166,7 @@ export default {
     {
       url: "windowsloop.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+
     },
     {
       url: "www.zoopla.co.uk",
