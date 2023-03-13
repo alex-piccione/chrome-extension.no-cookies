@@ -163,5 +163,13 @@ export default {
       url: "windowsloop.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
+    {
+      url: "www.zoopla.co.uk",
+      actions: [{ remove_element: "div#gdpr-consent-tool-wrapper", repeat: "3 times, every 500 ms" }]
+    },
+    {
+      url: "linuxize.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper", repeat: "3 times, every 500 ms" }]
+    }
   ],
 }
