@@ -175,6 +175,10 @@ export default {
     {
       url: "linuxize.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper", repeat: "3 times, every 500 ms" }]
+    },
+    {
+      url: "ukradiolive.com",
+      actions: [{remove_element: "div#qc-cmp2-container", repeat: "10 times, every 1500 ms"}]
     }
   ],
 }
