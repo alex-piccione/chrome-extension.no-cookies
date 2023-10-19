@@ -28,6 +28,11 @@ const cleaner = {
       }
     }
 
+    const removeClassFromHtml = (siteUrl, className) => {
+      const element = document.querySelector("html");
+      element.classList.remove(className);
+    }
+
     const siteUrl = window?.location?.hostname
     log(`CleanIt start for ${siteUrl}...`)
 
@@ -50,6 +55,8 @@ const cleaner = {
         removeElement(siteUrl, action.remove_element, repeat)
       } else if (action.type == "remove element") {
         removeElement(siteUrl, action.querySelector, repeat)
+      } else if (action.remove_class_from_html) {
+        removeClassFromHtml(siteUrl, action.remove_class_from_html)
       } else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
     })
   },
