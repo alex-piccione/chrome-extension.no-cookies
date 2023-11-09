@@ -184,7 +184,7 @@ export default {
       url: "www.techradar.com",
       actions: [
         { remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"},
-        {remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+        { remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
     },
     {
       url: "www.expertreviews.co.uk",
@@ -195,6 +195,13 @@ export default {
       url: "helpdeskgeek.com",
       actions: [
         { remove_element: "div#snigel-cmp-framework", repeat: "3 times, every 1000 ms"}
+      ]
+    },
+    {
+      url: "allevents.in",
+      actions: [
+        { remove_element: "div.fc-consent-root"},
+        { type: "restore scrolling" }
       ]
     }
   ],

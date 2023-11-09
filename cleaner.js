@@ -33,6 +33,12 @@ const cleaner = {
       element.classList.remove(className);
     }
 
+    // remove style "overflow:hidden" from HTML and BODY elements
+    const restoreScrolling = (siteUrl) => {
+      document.querySelector("html").style.overflow = "inherit"
+      document.querySelector("body").style.overflow = "inherit"
+    }
+
     const siteUrl = window?.location?.hostname
     log(`CleanIt start for ${siteUrl}...`)
 
