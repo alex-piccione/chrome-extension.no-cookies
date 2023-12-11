@@ -166,6 +166,10 @@ export default {
     {
       url: "windowsloop.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+    },
+    {
+      url: "www.wikihow.it",
+      actions: [{ remove_element: "div.fc-consent-root"}]
     }
   ],
 }
