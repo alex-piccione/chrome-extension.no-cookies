@@ -144,10 +144,6 @@ export default {
       actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
     },
     {
-      url: "www.techradar.com",
-      actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
-    },
-    {
       url: "www.koskila.net",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
@@ -161,7 +157,7 @@ export default {
     },
     {
       url: "www.thewindowsclub.com",
-      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }]
     },
     {
       url: "windowsloop.com",
@@ -170,6 +166,46 @@ export default {
     {
       url: "www.wikihow.it",
       actions: [{ remove_element: "div.fc-consent-root"}]
+    },
+    {
+      url: "www.zoopla.co.uk",
+      actions: [{ remove_element: "div#gdpr-consent-tool-wrapper", repeat: "3 times, every 500 ms" }]
+    },
+    {
+      url: "linuxize.com",
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper", repeat: "3 times, every 500 ms" }]
+    },
+    {
+      url: "ukradiolive.com",
+      actions: [{remove_element: "div#qc-cmp2-container", repeat: "10 times, every 1500 ms"}]
+    },
+    {
+      url: "es.wallapop.com",
+      actions: [{remove_element: "div#onetrust-consent-sdk", repeat: "10 times, every 500 ms"}]
+    },
+    {
+      url: "www.techradar.com",
+      actions: [
+        { remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"},
+        { remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+    },
+    {
+      url: "www.expertreviews.co.uk",
+      actions: [{ remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"},
+      { remove_class_from_html: "sp_message_open"}]
+    },
+    {
+      url: "helpdeskgeek.com",
+      actions: [
+        { remove_element: "div#snigel-cmp-framework", repeat: "3 times, every 1000 ms"}
+      ]
+    },
+    {
+      url: "allevents.in",
+      actions: [
+        { remove_element: "div.fc-consent-root", repeat: "3 times, every 1000 ms"},
+        { type: "restore scrolling" }
+      ]
     }
   ],
 }
