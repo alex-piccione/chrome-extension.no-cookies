@@ -206,6 +206,14 @@ export default {
         { remove_element: "div.fc-consent-root", repeat: "3 times, every 1000 ms"},
         { type: "restore scrolling" }
       ]
+    },
+    {
+      url: "csharp.hotexamples.com",
+      actions: [{ remove_element: "div#ez-cmpv2-container"}]
+    },
+    {
+      url: "www.oraridiapertura24.it",
+      actions: [{remove_element: "div#qc-cmp2-container"}]
     }
   ],
 }
