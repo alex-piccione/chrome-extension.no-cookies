@@ -5,6 +5,7 @@ const cleaner = {
     const cssAnimation = "@keyframes remove_element { from { opacity:.9; } to { opacity: 0; scale: (0.1, 0.1)} }"
 
     const removeElement = (siteUrl, query, repeat, count = 0) => {
+      log(`remove element ${query}`)
       const element = document.querySelector(query)
       if (element) {
         var style = document.createElement("style")
@@ -14,11 +15,11 @@ const cleaner = {
 
         element.style.animationName = "remove_element"
         element.style.animationFillMode = "forwards"
-        element.style.animationDuration = "0.4s"
+        element.style.animationDuration = "0.3s"
 
         setTimeout(() => {
           element.remove()
-        }, 450)
+        }, 350)
       } else {
         log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
         if (++count < repeat.times) {
@@ -32,6 +33,16 @@ const cleaner = {
       const element = document.querySelector("html");
       element.classList.remove(className);
     }
+
+    const removeClassFromBody = (siteUrl, className) => {
+      const element = document.querySelector("body");
+      element.classList.remove(className);
+    }
+
+    //const removeClassFromElement = (siteUrl, query, className) => {
+    //  const element = document.querySelector(query);
+    //  element.classList.remove(className);
+    //}
 
     // remove style "overflow:hidden" from HTML and BODY elements
     const restoreScrolling = (siteUrl) => {
@@ -63,6 +74,8 @@ const cleaner = {
         removeElement(siteUrl, action.querySelector, repeat)
       } else if (action.remove_class_from_html) {
         removeClassFromHtml(siteUrl, action.remove_class_from_html)
+      } else if (action.remove_class_from_body) {
+        removeClassFromBody(siteUrl, action.remove_class_from_body)
       } else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
     })
   },

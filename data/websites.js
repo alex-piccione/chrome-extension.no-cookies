@@ -1,5 +1,5 @@
 export default {
-  version: "1",
+  version: "1.0",
   logPattern: "[FREE!] {msg}",
   sites: [
     {
@@ -202,6 +202,13 @@ export default {
       actions: [
         { remove_element: "div.fc-consent-root", repeat: "3 times, every 1000 ms"},
         { type: "restore scrolling" }
+      ]
+    },
+    {
+      url: "www.cherry-world.com",
+      actions: [
+        { remove_element: "div#usercentrics-root", repeat: "6 times, every 500 ms"},
+        { remove_class_from_body: "overflowHidden", repeat: "6 times, every 1000 ms"}
       ]
     }
   ],
