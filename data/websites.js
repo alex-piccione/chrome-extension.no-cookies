@@ -145,7 +145,12 @@ export default {
     },
     {
       url: "www.techradar.com",
-      actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+      actions: [
+        { remove_element: "div#qc-cmp2-container" }, 
+        { remove_element: "div#slice-container-newsletterForm-exitIntent" },
+        { remove_element: ".sp_message_container_808540", repeat: "3 times, every 1500 ms" },
+        { type: "remove iframes" },
+        { type: "restore scrolling" }],
     },
     {
       url: "www.koskila.net",
@@ -179,6 +184,14 @@ export default {
     {
       url: "ukradiolive.com",
       actions: [{remove_element: "div#qc-cmp2-container", repeat: "10 times, every 1500 ms"}]
-    }
+    },
+    {
+      url: "www.letuelezioni.it",
+      actions: [{ remove_element: "div#pp"}]
+    },
+    {
+      url: "www.tripadvisor.com",
+      actions: [{ remove_element: "div#onetrust-consent-sdk"}]
+    },
   ],
 }

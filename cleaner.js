@@ -28,6 +28,31 @@ const cleaner = {
       }
     }
 
+    const removeIframes = (siteUrl) => {
+      
+      const iframes = document.querySelectorAll("iframe")
+      const count = iframes.length
+      log(`removeIframes found ${count} iframes`)
+      for (const iframe in iframes) {
+        try {
+          //iframe.parentNode.removeChild(iframe);
+          // iframe.remove() does not work
+          log(`iframe.parentElement: ${iframe.parentElement}`) // undefined
+          log(`iframe.parentNode: ${iframe.parentNode}`) // undefined
+          iframe.parentElement.removeChild(iframe);
+        }
+        catch (error) {
+          log(`Cannot remove iframe ${iframe}. ${error} `)
+        }
+      }
+      
+      log(`removeIframes removed ${count} iframes`)
+    }
+
+    const restoreScrolling = (siteUrl) => {
+      log("restoreScrolling not implemented")
+    }
+
     const siteUrl = window?.location?.hostname
     log(`CleanIt start for ${siteUrl}...`)
 
@@ -50,7 +75,11 @@ const cleaner = {
         removeElement(siteUrl, action.remove_element, repeat)
       } else if (action.type == "remove element") {
         removeElement(siteUrl, action.querySelector, repeat)
-      } else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
+      } else if (action.type === "restore scrolling") {
+        restoreScrolling(siteUrl, repeat)
+      } else if (action.type === "remove iframes") {
+        removeIframes(siteUrl, repeat)
+      }
     })
   },
 }
