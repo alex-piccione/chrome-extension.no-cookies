@@ -28,8 +28,8 @@ const cleaner = {
       }
     }
 
-    const removeIframes = (siteUrl) => {
-      
+
+    const removeIframes = (siteUrl) => {      
       const iframes = document.querySelectorAll("iframe")
       const count = iframes.length
       log(`removeIframes found ${count} iframes`)
@@ -51,6 +51,17 @@ const cleaner = {
 
     const restoreScrolling = (siteUrl) => {
       log("restoreScrolling not implemented")
+
+    const removeClassFromHtml = (siteUrl, className) => {
+      const element = document.querySelector("html");
+      element.classList.remove(className);
+    }
+
+    // remove style "overflow:hidden" from HTML and BODY elements
+    const restoreScrolling = (siteUrl) => {
+      document.querySelector("html").style.overflow = "inherit"
+      document.querySelector("body").style.overflow = "inherit"
+
     }
 
     const siteUrl = window?.location?.hostname
@@ -71,17 +82,13 @@ const cleaner = {
         console.error(`Failed to parse repeat string "${action.repeatString}". ${err}`)
       }
 
-      if (action.remove_element) {
-        removeElement(siteUrl, action.remove_element, repeat)
-      } else if (action.type == "remove element") {
-        removeElement(siteUrl, action.querySelector, repeat)
-      } else if (action.type === "restore scrolling") {
-        restoreScrolling(siteUrl, repeat)
-      } else if (action.type === "remove iframes") {
-        removeIframes(siteUrl, repeat)
-      }
+      if (action.remove_element)removeElement(siteUrl, action.remove_element, repeat)
+      else if (action.type == "remove element") removeElement(siteUrl, action.querySelector, repeat)
+      else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
+      else if (action.type === "remove iframes") removeIframes(siteUrl, repeat)
+      else if (action.remove_class_from_html) removeClassFromHtml(siteUrl, action.remove_class_from_html)      
     })
-  },
+  }
 }
 
 export default cleaner

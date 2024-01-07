@@ -145,7 +145,7 @@ export default {
     },
     {
       url: "www.techradar.com",
-      actions: [
+      actions: [        
         { remove_element: "div#qc-cmp2-container" }, 
         { remove_element: "div#slice-container-newsletterForm-exitIntent" },
         { remove_element: ".sp_message_container_808540", repeat: "3 times, every 1500 ms" },
@@ -166,12 +166,15 @@ export default {
     },
     {
       url: "www.thewindowsclub.com",
-      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }]
     },
     {
       url: "windowsloop.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
-
+    },
+    {
+      url: "www.wikihow.it",
+      actions: [{ remove_element: "div.fc-consent-root"}]
     },
     {
       url: "www.zoopla.co.uk",
@@ -193,5 +196,41 @@ export default {
       url: "www.tripadvisor.com",
       actions: [{ remove_element: "div#onetrust-consent-sdk"}]
     },
+    {
+      url: "es.wallapop.com",
+      actions: [{remove_element: "div#onetrust-consent-sdk", repeat: "10 times, every 500 ms"}]
+    },
+    {
+      url: "www.techradar.com",
+      actions: [
+        { remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"},
+        { remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
+    },
+    {
+      url: "www.expertreviews.co.uk",
+      actions: [{ remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"},
+      { remove_class_from_html: "sp_message_open"}]
+    },
+    {
+      url: "helpdeskgeek.com",
+      actions: [
+        { remove_element: "div#snigel-cmp-framework", repeat: "3 times, every 1000 ms"}
+      ]
+    },
+    {
+      url: "allevents.in",
+      actions: [
+        { remove_element: "div.fc-consent-root", repeat: "3 times, every 1000 ms"},
+        { type: "restore scrolling" }
+      ]
+    },
+    {
+      url: "csharp.hotexamples.com",
+      actions: [{ remove_element: "div#ez-cmpv2-container"}]
+    },
+    {
+      url: "www.oraridiapertura24.it",
+      actions: [{remove_element: "div#qc-cmp2-container"}]
+    }
   ],
 }
