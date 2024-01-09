@@ -49,9 +49,6 @@ const cleaner = {
       log(`removeIframes removed ${count} iframes`)
     }
 
-    const restoreScrolling = (siteUrl) => {
-      log("restoreScrolling not implemented")
-
     const removeClassFromHtml = (siteUrl, className) => {
       const element = document.querySelector("html");
       element.classList.remove(className);
@@ -61,7 +58,6 @@ const cleaner = {
     const restoreScrolling = (siteUrl) => {
       document.querySelector("html").style.overflow = "inherit"
       document.querySelector("body").style.overflow = "inherit"
-
     }
 
     const siteUrl = window?.location?.hostname

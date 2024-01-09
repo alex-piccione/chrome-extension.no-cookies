@@ -231,6 +231,14 @@ export default {
     {
       url: "www.oraridiapertura24.it",
       actions: [{remove_element: "div#qc-cmp2-container"}]
+    },
+    {
+      url: "codeigo.com",
+      actions: [{remove_element: "div#ez-cmpv2-container"}]
+    },
+    {
+      url: "www.autoscout24.it",
+      actions: [{remove_element: "div#as24-cmp-popup", repeat: "3 times, every 500 ms"}]
     }
   ],
 }
