@@ -3,6 +3,12 @@ export default {
   logPattern: "[FREE!] {msg}",
   sites: [
     {
+      url: "<any>",
+      actions: [
+        {remove_element: "div.fc-consent-root", exclude: []}
+      ]      
+    },
+    {
       url: "www.geeksforgeeks.org",
       actions: [{ remove_element: "div.fc-consent-root" }],
     },
@@ -239,6 +245,25 @@ export default {
     {
       url: "www.autoscout24.it",
       actions: [{remove_element: "div#as24-cmp-popup", repeat: "3 times, every 500 ms"}]
+    },
+    {
+      url: "www.letuelezioni.it",
+      actions: [{remove_element: "div#pp"}]
+    },
+    {
+      url :"www.moto.it",
+      note: "it does not work whan open the page inbackground. I don't know why.",
+      actions: [
+        { remove_element: "div#iubenda-cs-banner", repeat: "30 times, every 500 ms"},
+        { type: "restore scrolling" },
+        { remove_element: "div.app-masthead", repeat: "5 times, every 500 ms" }
+      ]
+    },
+    {
+      url: "cpu.userbenchmark.com",
+      actions: [
+        {remove_element: "div.fc-consent-root"}
+      ]
     }
   ],
 }
