@@ -39,7 +39,7 @@ const cleaner = {
           // iframe.remove() does not work
           log(`iframe.parentElement: ${iframe.parentElement}`) // undefined
           log(`iframe.parentNode: ${iframe.parentNode}`) // undefined
-          iframe.parentElement.removeChild(iframe);
+          iframe.parentElement.removeChild(iframe)
         }
         catch (error) {
           log(`Cannot remove iframe ${iframe}. ${error} `)
@@ -50,8 +50,13 @@ const cleaner = {
     }
 
     const removeClassFromHtml = (siteUrl, className) => {
-      const element = document.querySelector("html");
-      element.classList.remove(className);
+      const element = document.querySelector("html")
+      element.classList.remove(className)
+    }
+
+    const removeClassFromBody= (siteUrl, className) => {
+      const element = document.querySelector("body")
+      element.classList.remove(className)
     }
 
     // remove style "overflow:hidden" from HTML and BODY elements
@@ -83,6 +88,7 @@ const cleaner = {
       else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
       else if (action.type === "remove iframes") removeIframes(siteUrl, repeat)
       else if (action.remove_class_from_html) removeClassFromHtml(siteUrl, action.remove_class_from_html)      
+      else if (action.remove_class_from_body) removeClassFromBody(siteUrl, action.remove_class_from_body)      
     })
   }
 }

@@ -264,6 +264,24 @@ export default {
       actions: [
         {remove_element: "div.fc-consent-root"}
       ]
+    },
+    {
+      url:"www.etsy.com",
+      actions: [
+        { remove_element: "div#wt-portals" },
+        { type: "restore scrolling" },
+        { remove_class_from_body: "wt-body-no-scroll"}
+      ]
+    },
+    {
+      url: "i.maxask.com",
+      actions: [{remove_element: "div.fc-consent-root"}]
+    },
+    {
+      url: "dotnettutorials.net",
+      actions: [
+        {remove_element: "div#ez-cmpv2-container", repeat: "5 times, every 500 ms"}
+      ]
     }
   ],
 }
