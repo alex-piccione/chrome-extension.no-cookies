@@ -19,7 +19,7 @@ const cleaner = {
 
         setTimeout(() => {
           element.remove()
-        }, 350)
+        }, 500)
       } else {
         log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
         if (++count < repeat.times) {

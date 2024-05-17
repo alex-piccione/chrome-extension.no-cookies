@@ -200,7 +200,7 @@ export default {
     {
       url: "allevents.in",
       actions: [
-        { remove_element: "div.fc-consent-root", repeat: "3 times, every 1000 ms"},
+        { remove_element: "div.fc-consent-root", repeat: "6 times, every 1000 ms"},
         { type: "restore scrolling" }
       ]
     },
