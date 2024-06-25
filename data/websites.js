@@ -282,6 +282,10 @@ export default {
       actions: [
         {remove_element: "div#ez-cmpv2-container", repeat: "5 times, every 500 ms"}
       ]
+    },
+    {
+      url: "www.geeksforgeeks.org",
+      actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
     }
   ],
 }
