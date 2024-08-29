@@ -285,9 +285,11 @@ export default {
     },
     {
       url: "www.advrider.com",
-      actions: [
-        { remove_element: "div#qc-cmp2-container", repeat: "10 times, every 500 ms" }
-      ]
+      actions: [ { remove_element: "div#qc-cmp2-container", repeat: "10 times, every 500 ms" }]
     },
+    {
+      url: "www.geeksforgeeks.org",
+      actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
+    }
   ],
 }
