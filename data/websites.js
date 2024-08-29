@@ -282,6 +282,12 @@ export default {
       actions: [
         {remove_element: "div#ez-cmpv2-container", repeat: "5 times, every 500 ms"}
       ]
-    }
+    },
+    {
+      url: "www.advrider.com",
+      actions: [
+        { remove_element: "div#qc-cmp2-container", repeat: "10 times, every 500 ms" }
+      ]
+    },
   ],
 }

@@ -6,6 +6,7 @@ const cleaner = {
 
     const removeElement = (siteUrl, query, repeat, count = 0) => {
       const element = document.querySelector(query)
+      // log(`removeElement "${query}" from ${siteUrl}.`)
       if (element) {
         var style = document.createElement("style")
         style.appendChild(document.createTextNode(cssAnimation))
@@ -15,6 +16,8 @@ const cleaner = {
         element.style.animationName = "remove_element"
         element.style.animationFillMode = "forwards"
         element.style.animationDuration = "0.4s"
+
+        // log(`found "${query}" in ${siteUrl}, going to remove!`)
 
         setTimeout(() => {
           element.remove()
@@ -83,7 +86,7 @@ const cleaner = {
         console.error(`Failed to parse repeat string "${action.repeatString}". ${err}`)
       }
 
-      if (action.remove_element)removeElement(siteUrl, action.remove_element, repeat)
+      if (action.remove_element) removeElement(siteUrl, action.remove_element, repeat)
       else if (action.type == "remove element") removeElement(siteUrl, action.querySelector, repeat)
       else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
       else if (action.type === "remove iframes") removeIframes(siteUrl, repeat)
