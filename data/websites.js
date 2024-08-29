@@ -290,6 +290,10 @@ export default {
     {
       url: "www.geeksforgeeks.org",
       actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
-    }
-  ],
+    },
+    {
+      url: "www.freecodecamp.org", 
+      actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
+    }    
+  ]
 }
