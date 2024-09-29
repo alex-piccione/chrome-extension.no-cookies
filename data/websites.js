@@ -3,6 +3,12 @@ export default {
   logPattern: "[FREE!] {msg}",
   sites: [
     {
+      url: "<any>",
+      actions: [
+        {remove_element: "div.fc-consent-root", exclude: []}
+      ]      
+    },
+    {
       url: "www.geeksforgeeks.org",
       actions: [{ remove_element: "div.fc-consent-root" }],
     },
@@ -144,6 +150,15 @@ export default {
       actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
     },
     {
+      url: "www.techradar.com",
+      actions: [        
+        { remove_element: "div#qc-cmp2-container" }, 
+        { remove_element: "div#slice-container-newsletterForm-exitIntent" },
+        { remove_element: ".sp_message_container_808540", repeat: "3 times, every 1500 ms" },
+        { type: "remove iframes" },
+        { type: "restore scrolling" }],
+    },
+    {
       url: "www.koskila.net",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
@@ -157,12 +172,15 @@ export default {
     },
     {
       url: "www.thewindowsclub.com",
-      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }]
     },
     {
       url: "windowsloop.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
-
+    },
+    {
+      url: "www.wikihow.it",
+      actions: [{ remove_element: "div.fc-consent-root"}]
     },
     {
       url: "www.zoopla.co.uk",
@@ -175,6 +193,14 @@ export default {
     {
       url: "ukradiolive.com",
       actions: [{remove_element: "div#qc-cmp2-container", repeat: "10 times, every 1500 ms"}]
+    },
+    {
+      url: "www.letuelezioni.it",
+      actions: [{ remove_element: "div#pp"}]
+    },
+    {
+      url: "www.tripadvisor.com",
+      actions: [{ remove_element: "div#onetrust-consent-sdk"}]
     },
     {
       url: "es.wallapop.com",
@@ -210,6 +236,71 @@ export default {
         { remove_element: "div#usercentrics-root", repeat: "6 times, every 500 ms"},
         { remove_class_from_body: "overflowHidden", repeat: "6 times, every 1000 ms"}
       ]
-    }
-  ],
+    },
+    {
+      url: "csharp.hotexamples.com",
+      actions: [{ remove_element: "div#ez-cmpv2-container"}]
+    },
+    {
+      url: "www.oraridiapertura24.it",
+      actions: [{remove_element: "div#qc-cmp2-container"}]
+    },
+    {
+      url: "codeigo.com",
+      actions: [{remove_element: "div#ez-cmpv2-container"}]
+    },
+    {
+      url: "www.autoscout24.it",
+      actions: [{remove_element: "div#as24-cmp-popup", repeat: "3 times, every 500 ms"}]
+    },
+    {
+      url: "www.letuelezioni.it",
+      actions: [{remove_element: "div#pp"}]
+    },
+    {
+      url :"www.moto.it",
+      note: "it does not work whan open the page inbackground. I don't know why.",
+      actions: [
+        { remove_element: "div#iubenda-cs-banner", repeat: "30 times, every 500 ms"},
+        { type: "restore scrolling" },
+        { remove_element: "div.app-masthead", repeat: "5 times, every 500 ms" }
+      ]
+    },
+    {
+      url: "cpu.userbenchmark.com",
+      actions: [
+        {remove_element: "div.fc-consent-root"}
+      ]
+    },
+    {
+      url:"www.etsy.com",
+      actions: [
+        { remove_element: "div#wt-portals" },
+        { type: "restore scrolling" },
+        { remove_class_from_body: "wt-body-no-scroll"}
+      ]
+    },
+    {
+      url: "i.maxask.com",
+      actions: [{remove_element: "div.fc-consent-root"}]
+    },
+    {
+      url: "dotnettutorials.net",
+      actions: [
+        {remove_element: "div#ez-cmpv2-container", repeat: "5 times, every 500 ms"}
+      ]
+    },
+    {
+      url: "www.advrider.com",
+      actions: [ { remove_element: "div#qc-cmp2-container", repeat: "10 times, every 500 ms" }]
+    },
+    {
+      url: "www.geeksforgeeks.org",
+      actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
+    },
+    {
+      url: "www.freecodecamp.org", 
+      actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
+    }    
+  ]
 }
