@@ -5,7 +5,9 @@ const cleaner = {
     const cssAnimation = "@keyframes remove_element { from { opacity:.9; } to { opacity: 0; scale: (0.1, 0.1)} }"
 
     const removeElement = (siteUrl, query, repeat, count = 0) => {
+      log(`remove element ${query}`)
       const element = document.querySelector(query)
+      // log(`removeElement "${query}" from ${siteUrl}.`)
       if (element) {
         var style = document.createElement("style")
         style.appendChild(document.createTextNode(cssAnimation))
@@ -18,7 +20,7 @@ const cleaner = {
 
         setTimeout(() => {
           element.remove()
-        }, 450)
+        }, 500)
       } else {
         log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
         if (++count < repeat.times) {
@@ -54,10 +56,15 @@ const cleaner = {
       element.classList.remove(className)
     }
 
-    const removeClassFromBody= (siteUrl, className) => {
-      const element = document.querySelector("body")
-      element.classList.remove(className)
+    const removeClassFromBody = (siteUrl, className) => {
+      const element = document.querySelector("body");
+      element.classList.remove(className);
     }
+    
+    //const removeClassFromElement = (siteUrl, query, className) => {
+    //  const element = document.querySelector(query);
+    //  element.classList.remove(className);
+    //}
 
     // remove style "overflow:hidden" from HTML and BODY elements
     const restoreScrolling = (siteUrl) => {
@@ -83,12 +90,11 @@ const cleaner = {
         console.error(`Failed to parse repeat string "${action.repeatString}". ${err}`)
       }
 
-      if (action.remove_element)removeElement(siteUrl, action.remove_element, repeat)
+      if (action.remove_element) removeElement(siteUrl, action.remove_element, repeat)
       else if (action.type == "remove element") removeElement(siteUrl, action.querySelector, repeat)
+      else if (action.remove_class_from_html) removeClassFromHtml(siteUrl, action.remove_class_from_html)
+      else if (action.remove_class_from_body) removeClassFromBody(siteUrl, action.remove_class_from_body)
       else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
-      else if (action.type === "remove iframes") removeIframes(siteUrl, repeat)
-      else if (action.remove_class_from_html) removeClassFromHtml(siteUrl, action.remove_class_from_html)      
-      else if (action.remove_class_from_body) removeClassFromBody(siteUrl, action.remove_class_from_body)      
     })
   }
 }
