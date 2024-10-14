@@ -305,6 +305,10 @@ export default {
     {
       url: "dnschecker.org",
       actions: [{remove_element: "div#sp_message_container_1117104", repeat: "5 times, every 500 ms"}]
+    },
+    {
+      url: "www.timeanddate.com",
+      actions: [{ remove_element: "div#qc-cmp2-container", repeat: "5 times, every 500 ms"}]
     }
   ],
 }
