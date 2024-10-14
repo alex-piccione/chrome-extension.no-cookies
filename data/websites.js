@@ -286,6 +286,10 @@ export default {
     {
       url: "www.geeksforgeeks.org",
       actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
+    },
+    {
+      url: "dnschecker.org",
+      actions: [{remove_element: "div#sp_message_container_1117104", repeat: "5 times, every 500 ms"}]
     }
   ],
 }
