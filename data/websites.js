@@ -61,6 +61,10 @@ export default {
       actions: [{ remove_element: "div#onetrust-consent-sdk", repeat: "5 times, every 500 ms" }],
     },
     {
+      url: "www.tripadvisor.it",
+      actions: [{ remove_element: "div#onetrust-consent-sdk", repeat: "5 times, every 500 ms"}]
+    },
+    {
       url: "itsmycode.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
@@ -198,10 +202,7 @@ export default {
       url: "www.letuelezioni.it",
       actions: [{ remove_element: "div#pp"}]
     },
-    {
-      url: "www.tripadvisor.com",
-      actions: [{ remove_element: "div#onetrust-consent-sdk"}]
-    },
+
     {
       url: "es.wallapop.com",
       actions: [{remove_element: "div#onetrust-consent-sdk", repeat: "10 times, every 500 ms"}]
