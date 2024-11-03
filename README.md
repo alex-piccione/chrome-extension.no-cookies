@@ -1,10 +1,9 @@
 # Browser Annoyance Killer
 
 This is a Chrome extension to remove :cookie: settings dialog
-...and other annoyances.
-
-It works also in Maxthon, my main browser.
-
+...and other annoyances.  
+It works also with Maxthon browser.  
+  
 ## Websites where we do something or will do something
 
 |                    | Site                      | Status         | Note                                                               |
