@@ -11,13 +11,11 @@
   },
   "permissions": ["storage", "activeTab", "scripting", "tabs"],
   "host_permissions": ["http://*/", "https://*/"],
-  "options_page": "options.html",
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
       "16": "/images/logo.png",
       "32": "/images/logo.png",

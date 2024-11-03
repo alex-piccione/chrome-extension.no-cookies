@@ -9,7 +9,7 @@ Download this repo somewhere in your PC.
 Open browser extensions Manager panel (for Chrome you can use this URL "chrome://extensions/").  
 Enable Developer Mode.  
 With Developer Mode on, you can use the "Load unpacked" command and point to the folder where you extract this repo.  
-Done. The extension is installed.   
+Done. The extension is installed.  
 If you are already in a page with opened Cookies settings panels, you need to reload it (CTRL+R).
   
 ## Websites where we do something or will do something
