@@ -316,6 +316,10 @@ export default {
         {remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"},
         {remove_class_from_body: "cp-banner-visible"}
       ]
+    },
+    {
+      url: "www.repubblica.it",
+      actions: [{remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"}]
     }
   ],
 }
