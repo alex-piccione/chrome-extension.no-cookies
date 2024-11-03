@@ -5,7 +5,7 @@ It works also with Chrome and  Maxthon browser. Never tested on other browsers.
 
 ## How to install?
 
-Download this repo somewhere in your PC.  
+Download this repo somewhere in your PC (<https://github.com/alex-piccione/chrome-extension.no-cookies/archive/refs/heads/main.zip>).  
 Open browser extensions Manager panel (for Chrome you can use this URL "chrome://extensions/").  
 Enable Developer Mode.  
 With Developer Mode on, you can use the "Load unpacked" command and point to the folder where you extract this repo.  
