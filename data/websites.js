@@ -130,8 +130,20 @@ export default {
       actions: [{ remove_element: "div#onetrust-consent-sdk" }],
     },
     {
-      url: "www.corriere.it",
-      actions: [{ remove_element: "div.privacy-cor-wall" }],
+      url: "corriere.it",
+      actions: [
+        /* old */
+        { remove_element: "div.privacy-cor-wall" }, 
+        /* new */
+        { remove_element: "div.privacy-cp-wall", repeat: "10 times, every 500 ms" },
+        { remove_element: "div.bck-adblock", repeat: "10 times, every 500 ms" },
+        { type: "restore scrolling", repeat: "10 times, every 500 ms" },
+        { remove_class_from_html: "has--adblock", repeat: "15 times, every 500 ms"},
+        { remove_class_from_body: "noScroll", repeat: "15 times, every 500 ms"},
+        { remove_element: "div#rcsad_TopLeft_wrapper"},
+        { type: "remove iframes" },
+        { type: "remove scripts" },
+      ]
     },
     {
       url: "forst.tax",

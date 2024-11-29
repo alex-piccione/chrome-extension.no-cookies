@@ -12,30 +12,13 @@ With Developer Mode on, you can use the "Load unpacked" command and point to the
 Done. The extension is installed.  
 If you are already in a page with opened Cookies settings panels, you need to reload it (CTRL+R).
   
-## Websites where we do something or will do something
-
-Not updated. Current list can be found in _/data/websites.js_ file.  
-
-|                    | Site                      | Status         | Note                                                               |
-| ------------------ | ------------------------- | -------------- | ------------------------------------------------------------------ |
-| :heavy_check_mark: | www.geeksforgeeks.org     | Done           | Cookies                                                            |
-| :ok:               | www.cyberciti.biz         | Partially done | Cookies removed but still shows up notification and sign-up dialog |
-| :ok:               | www.aranzulla.it          | Done           | Cookies, Scrolling (not easy to do)                                |
-| :heavy_check_mark: | www.letuelezioni.it       | Done           | Cookies                                                            |
-| :heavy_check_mark: | www.blablacar.it          | Done           | Cookies                                                            |
-| :heavy_check_mark: | edition.cnn.com           | Done           | Cookies                                                            |
-| :heavy_check_mark: | www.coindesk.com          | Done           | Cookies                                                            |
-| :heavy_check_mark: | www.tripadvisor.com       | Done           | Cookies                                                            |
-| :heavy_check_mark: | itsmycode.com             | Done           | Cookies                                                            |
-| :heavy_check_mark: | forums.androidcentral.com | Done           | Cookies                                                            |
-| :heavy_check_mark  | www.hsbc.co.uk            | Done           | Cookies                                                            |
-
 ### Websites that we can't fix
 
-|     | Site                | Status        | Note                                                             |
-| --- | ------------------- | ------------- | ---------------------------------------------------------------- |
-| :x: | www.telegraph.co.uk | Can't be done | Requires subscription                                            |
-| :x: | www.timeanddate.com | Not solved    | Removing the cookies panels seems to breack some functionalities |
+|     | Site                | Status        | Note                                                               |
+| --- | ------------------- | ------------- | ------------------------------------------------------------------ |
+| :x: | www.telegraph.co.uk | Can't be done | Requires subscription                                              |
+| :x: | www.timeanddate.com | Not solved    | Removing the cookies panels seems to breack some functionalities   |
+| :x: | corriere.it         | Not solved    | After many pages reload tehre is a redirect to a subscription page |
 
 ## I found a website that is not managed
 
@@ -43,7 +26,6 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 ## Know bugs and defects
 
-- Option page is showing not inherent info.
 - Not registered as official Chrome extension because still in initial stage of development
 
 ## For developer

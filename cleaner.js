@@ -31,7 +31,7 @@ const cleaner = {
     }
 
 
-    const removeIframes = (siteUrl) => {      
+    const removeIframes = (repeat) => {      
       const iframes = document.querySelectorAll("iframe")
       const count = iframes.length
       log(`removeIframes found ${count} iframes`)
@@ -51,14 +51,40 @@ const cleaner = {
       log(`removeIframes removed ${count} iframes`)
     }
 
-    const removeClassFromHtml = (siteUrl, className) => {
-      const element = document.querySelector("html")
-      element.classList.remove(className)
+    const removeScripts = (repat) => {      
+      const scripts = document.querySelectorAll("script")
+      const count = scripts.length
+      log(`removeScriptss found ${count} scripts`)
+      for (const script in scripts) {
+        try {
+          script.remove()
+        }
+        catch (error) {
+          log(`Cannot remove script ${script}. ${error} `)
+        }
+      }
+      
+      log(`removeScriptss removed ${count} scripts`)
     }
 
-    const removeClassFromBody = (siteUrl, className) => {
+    const removeClassFromHtml = (className, repeat, count = 0) => {
+      log(`removeClassFromHtml class: ${className} (#${count})`)
+      const element = document.querySelector("html")
+      element.classList.remove(className)
+
+      if (++count < repeat.times) {
+        setTimeout(() => removeClassFromHtml(className, repeat, count), repeat.delay)
+      }
+    }
+
+    const removeClassFromBody = (className, repeat, count = 0) => {
+      log(`removeClassFromBody class: ${className} (#${count})`)
       const element = document.querySelector("body");
       element.classList.remove(className);
+
+      if (++count < repeat.times) {
+        setTimeout(() => removeClassFromBody(className, repeat, count), repeat.delay)
+      }
     }
     
     //const removeClassFromElement = (siteUrl, query, className) => {
@@ -70,10 +96,13 @@ const cleaner = {
     const restoreScrolling = (siteUrl) => {
       document.querySelector("html").style.overflow = "inherit"
       document.querySelector("body").style.overflow = "inherit"
+      document.querySelector("html").style.overflowX = "inherit"
     }
 
-    const siteUrl = window?.location?.hostname
-    log(`CleanIt start for ${siteUrl}...`)
+    const fullSiteUrl = window?.location?.hostname
+    // get domain only (bbb.ccc from aaa.bbb.ccc)
+    const siteUrl = fullSiteUrl.split(".").slice(-2).join(".")
+    log(`CleanIt start for ${fullSiteUrl} (${siteUrl})...`)
 
     const site = config.sites.find((s) => s.url === siteUrl)
 
@@ -92,9 +121,11 @@ const cleaner = {
 
       if (action.remove_element) removeElement(siteUrl, action.remove_element, repeat)
       else if (action.type == "remove element") removeElement(siteUrl, action.querySelector, repeat)
-      else if (action.remove_class_from_html) removeClassFromHtml(siteUrl, action.remove_class_from_html)
-      else if (action.remove_class_from_body) removeClassFromBody(siteUrl, action.remove_class_from_body)
+      else if (action.remove_class_from_html) removeClassFromHtml(action.remove_class_from_html, repeat)
+      else if (action.remove_class_from_body) removeClassFromBody(action.remove_class_from_body, repeat)
       else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
+      else if (action.type === "remove iframes") removeIframes(repeat)
+      else if (action.type === "remove scripts") removeScripts(repeat)
     })
   }
 }
