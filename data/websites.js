@@ -5,7 +5,8 @@ export default {
     {
       url: "<any>",
       actions: [
-        {remove_element: "div.fc-consent-root", exclude: []}
+        { remove_element: "div.fc-consent-root", exclude_sites: []},
+        { type: "restore scrolling" }
       ]      
     },
     {
@@ -105,12 +106,7 @@ export default {
       url: "akashmittal.com",
       actions: [
         { remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" },
-        {
-          description: "Reset the web page scrolling functionality",
-          type: "restore scrolling",
-          //on: ["html", "body"],
-          repeat: "3 times, every 500 ms",
-        },
+        { type: "restore scrolling", repeat: "3 times, every 500 ms" },
       ],
     },
     {

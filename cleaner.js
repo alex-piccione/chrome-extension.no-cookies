@@ -1,5 +1,8 @@
 const cleaner = {
-  clean: (config) => {
+
+
+
+  clean: (config, actionsForAny) => {
     const log = (msg) => console.log(config.logPattern.replace("{msg}", `${msg}`))
 
     const cssAnimation = "@keyframes remove_element { from { opacity:.9; } to { opacity: 0; scale: (0.1, 0.1)} }"
@@ -99,14 +102,19 @@ const cleaner = {
       document.querySelector("html").style.overflowX = "inherit"
     }
 
+    /*  Execute Actions for the specific website (if defined) and any  */
+
     const fullSiteUrl = window?.location?.hostname
     // get domain only (bbb.ccc from aaa.bbb.ccc)
     const siteUrl = fullSiteUrl.split(".").slice(-2).join(".")
     log(`CleanIt start for ${fullSiteUrl} (${siteUrl})...`)
 
-    const site = config.sites.find((s) => s.url === siteUrl)
+    const siteActions = config.sites.find((s) => s.url === siteUrl)?.actions ?? []
 
-    site?.actions?.forEach((action) => {
+    // acc common actions after the specific website actions
+    const allActions = siteActions.concat(actionsForAny)
+
+    allActions.forEach((action) => {
       const repeat = { times: 0, delay: 0 }
       try {
         if (action.repeat) {
@@ -126,7 +134,8 @@ const cleaner = {
       else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
       else if (action.type === "remove iframes") removeIframes(repeat)
       else if (action.type === "remove scripts") removeScripts(repeat)
-    })
+    })  
+
   }
 }
 

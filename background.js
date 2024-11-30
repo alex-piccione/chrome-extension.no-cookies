@@ -17,6 +17,11 @@ chrome.runtime.onInstalled.addListener(() => {
   _log("store", { report: report, config: config })
 })
 
+
+// prepare common actions
+const actionsForAny = config.sites.find((s) => s.url === "<any>").actions
+_log(`Found ${actionsForAny.length} actions to execute for any site.`)
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   _log("tab.onUpdated")
 
@@ -28,7 +33,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
       func: cleaner.clean,
-      args: [config],
+      args: [config, actionsForAny],
     })
   }
 })
