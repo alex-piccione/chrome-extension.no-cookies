@@ -27,7 +27,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
   if (tab.active && changeInfo.status === "complete") {
     // skip urls like "chrome://" to avoid extension error
-    if (tab.url?.startsWith("chrome://") || tab.url?.startsWith("mx://extensions/")) return undefined
+    if (tab.url?.startsWith("chrome://") || tab.url?.startsWith("mx://extensions/") || tab.url?.startsWith("http://localhost")) return undefined
 
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
