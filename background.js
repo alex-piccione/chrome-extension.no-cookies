@@ -1,22 +1,7 @@
 import cleaner from "./cleaner.js"
 import config from "./data/websites.js"
 
-const report = {
-  initialization: 0,
-  "successful remove": 0,
-  "failed remove": 0,
-}
-
 const _log = (msg, arg) => console.log(`[IAK] > ${msg}`, arg)
-
-chrome.runtime.onInstalled.addListener(() => {
-  _log("onInstalled")
-
-  // setup the report
-  chrome.storage.sync.set({ report: report, config: config })
-  _log("store", { report: report, config: config })
-})
-
 
 // prepare common actions
 const actionsForAny = config.sites.find((s) => s.url === "<any>").actions
