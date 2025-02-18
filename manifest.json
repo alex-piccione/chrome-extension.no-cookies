@@ -1,7 +1,7 @@
 {
   "name": "Don't bother me about cookies!",
   "description": "Removes cookies settings annoying dialogs.",
-  "version": "1.0.1.20241014",
+  "version": "25.2.18",
   "manifest_version": 3,
   "icons": {
     "16": "/images/logo.png",

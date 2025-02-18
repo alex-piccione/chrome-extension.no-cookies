@@ -1,7 +1,5 @@
 const cleaner = {
 
-
-
   clean: (config, actionsForAny) => {
     const log = (msg) => console.log(config.logPattern.replace("{msg}", `${msg}`))
 
@@ -21,9 +19,7 @@ const cleaner = {
         element.style.animationFillMode = "forwards"
         element.style.animationDuration = "0.4s"
 
-        setTimeout(() => {
-          element.remove()
-        }, 500)
+        setTimeout(() => { element.remove() }, 500)
       } else {
         log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
         if (++count < repeat.times) {
@@ -34,7 +30,7 @@ const cleaner = {
     }
 
 
-    const removeIframes = (repeat) => {      
+    const removeIframes = () => {      
       const iframes = document.querySelectorAll("iframe")
       const count = iframes.length
       log(`removeIframes found ${count} iframes`)
@@ -54,10 +50,10 @@ const cleaner = {
       log(`removeIframes removed ${count} iframes`)
     }
 
-    const removeScripts = (repat) => {      
+    const removeScripts = () => {      
       const scripts = document.querySelectorAll("script")
       const count = scripts.length
-      log(`removeScriptss found ${count} scripts`)
+      log(`removeScripts found ${count} scripts`)
       for (const script in scripts) {
         try {
           script.remove()
@@ -67,7 +63,7 @@ const cleaner = {
         }
       }
       
-      log(`removeScriptss removed ${count} scripts`)
+      log(`removeScripts removed ${count} scripts`)
     }
 
     const removeClassFromHtml = (className, repeat, count = 0) => {
@@ -90,13 +86,8 @@ const cleaner = {
       }
     }
     
-    //const removeClassFromElement = (siteUrl, query, className) => {
-    //  const element = document.querySelector(query);
-    //  element.classList.remove(className);
-    //}
-
     // remove style "overflow:hidden" from HTML and BODY elements
-    const restoreScrolling = (siteUrl) => {
+    const restoreScrolling = () => {
       document.querySelector("html").style.overflow = "inherit"
       document.querySelector("body").style.overflow = "inherit"
       document.querySelector("html").style.overflowX = "inherit"
@@ -131,9 +122,9 @@ const cleaner = {
       else if (action.type == "remove element") removeElement(siteUrl, action.querySelector, repeat)
       else if (action.remove_class_from_html) removeClassFromHtml(action.remove_class_from_html, repeat)
       else if (action.remove_class_from_body) removeClassFromBody(action.remove_class_from_body, repeat)
-      else if (action.type === "restore scrolling") restoreScrolling(siteUrl, repeat)
-      else if (action.type === "remove iframes") removeIframes(repeat)
-      else if (action.type === "remove scripts") removeScripts(repeat)
+      else if (action.type === "restore scrolling") restoreScrolling()
+      else if (action.type === "remove iframes") removeIframes()
+      else if (action.type === "remove scripts") removeScripts()
     })  
 
   }
