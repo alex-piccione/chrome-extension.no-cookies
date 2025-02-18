@@ -328,6 +328,10 @@ export default {
     {
       url: "www.repubblica.it",
       actions: [{remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"}]
+    },
+    {
+      url: "reddit.com",
+      actions: [{ remove_element: "shreddit-dynamic-ad-link", repeat: "1000000 times, every 1500 ms" }]
     }
   ],
 }
