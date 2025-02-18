@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - publish
+  pull_request:
+    branches:
+      - publish
 
 env:
   VERSION: "25.2.18-alpha"
