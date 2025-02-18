@@ -1,0 +1,26 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - publish
+
+env:
+  VERSION: "25.2.18-alpha"
+
+jobs:
+  zip:
+    runs-on: ubuntu:22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Zip extemsion
+        run: zip -r extension-${{ env.VERSION }}.zip . -x "*.git" "node_modules/*"
+        # -r: recursivo
+        # . : all the archive
+        # -x: exclusions
+      - name: Upload Zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          - name: extension-zip
+          - path: extension-${{ env.VERSION }}.zip
