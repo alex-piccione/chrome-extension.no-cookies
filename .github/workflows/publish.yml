@@ -25,5 +25,5 @@ jobs:
       - name: Upload Zip artifact
         uses: actions/upload-artifact@v4
         with:
-          - name: extension-zip
-          - path: extension-${{ env.VERSION }}.zip
+          name: extension-zip
+          path: extension-${{ env.VERSION }}.zip
