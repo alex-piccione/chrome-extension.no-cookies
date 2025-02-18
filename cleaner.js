@@ -102,7 +102,7 @@ const cleaner = {
 
     const siteActions = config.sites.find((s) => s.url === siteUrl)?.actions ?? []
 
-    // acc common actions after the specific website actions
+    // add common actions after the specific website actions
     const allActions = siteActions.concat(actionsForAny)
 
     allActions.forEach((action) => {

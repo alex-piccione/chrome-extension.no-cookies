@@ -27,8 +27,9 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
   if (tab.active && changeInfo.status === "complete") {
     // skip specific browsers urls to avoid extension error
-    if (tab.url?.startsWith("chrome://") /* Chrome*/ || 
-      tab.url?.startsWith("mx://extensions/") /* Maxthon */ ) return undefined
+    if ( tab.url?.startsWith("file:" /* local resource */)
+      || tab.url?.startsWith("chrome:") || tab.url?.startsWith("chrome-extension:") /* Chrome*/ 
+      || tab.url?.startsWith("mx:") /* Maxthon */ ) return undefined
 
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
