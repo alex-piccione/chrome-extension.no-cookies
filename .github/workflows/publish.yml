@@ -40,7 +40,7 @@ jobs:
       - name: Download Zip artifact
         uses: actions/download-artifact@v4
         with:
-          anme: extension-zip
+          name: extension-zip
       - name: Install chrome-webstore-upload-cli
         run: npm install chrome-webstore-upload-cli
       - name: Publish to Chrome Web Store
