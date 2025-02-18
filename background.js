@@ -7,7 +7,7 @@ const report = {
   "failed remove": 0,
 }
 
-const _log = (msg, arg) => console.log(`[No-Cookies] > ${msg}`, arg)
+const _log = (msg, arg) => console.log(`[IAK] > ${msg}`, arg)
 
 chrome.runtime.onInstalled.addListener(() => {
   _log("onInstalled")
@@ -26,13 +26,20 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   _log("tab.onUpdated")
 
   if (tab.active && changeInfo.status === "complete") {
-    // skip urls like "chrome://" to avoid extension error
-    if (tab.url?.startsWith("chrome://") || tab.url?.startsWith("mx://extensions/")) return undefined
+    // skip specific browsers urls to avoid extension error
+    if (tab.url?.startsWith("chrome://") /* Chrome*/ || 
+      tab.url?.startsWith("mx://extensions/") /* Maxthon */ ) return undefined
 
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      func: cleaner.clean,
+      func: () => {
+        try {
+         cleaner.clean()
+        }
+        catch(error)
+        { _log(`Tab: {tab.url}. Error: {error}`) }
+        },
       args: [config, actionsForAny],
     })
   }

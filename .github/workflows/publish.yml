@@ -10,6 +10,7 @@ on:
 
 env:
   VERSION: "25.2.18-alpha"
+  ZIP_FILE: extension-${{ env.VERSION }}.zip
 
 jobs:
   zip:
@@ -18,12 +19,38 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Zip extemsion
-        run: zip -r extension-${{ env.VERSION }}.zip . -x "*.git" "node_modules/*"
+        run: |
+          zip -r extension-${{ env.VERSION }}.zip . -x "*.git" "node_modules/*"
         # -r: recursivo
         # . : all the archive
         # -x: exclusions
+          echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
+        
       - name: Upload Zip artifact
         uses: actions/upload-artifact@v4
         with:
           name: extension-zip
           path: extension-${{ env.VERSION }}.zip
+
+  publish:
+    needs: zip
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download Zip artifact
+        uses: actions/download-artifact@v4
+        with:
+          anme: extension-zip
+      - name: Install chrome-webstore-upload-cli
+        run: npm install chrome-webstore-upload-cli
+      - name: Publish to Chrome Web Store
+        run: |
+          npx chrome-webstore-upload-cli upload \
+            --source extension-${{ env.VERSION }}.zip \
+            --extension-id ${{ env.EXTENSION_ID }} \
+            --client-id ${{ secrets.CHROME_CLIENT_ID }} \
+            --client-secret ${{ secrets.CHROME_CLIENT_SECRET }} \
+            --refresh-token ${{ secrets.CHROME_REFRESH_TOKEN }}
+        env:
+          CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
