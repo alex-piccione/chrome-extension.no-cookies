@@ -7,6 +7,10 @@ const _log = (msg, arg) => console.log(`[IAK] > ${msg}`, arg)
 const actionsForAny = config.sites.find((s) => s.url === "<any>").actions
 _log(`Found ${actionsForAny.length} actions to execute for any site.`)
 
+chrome.runtime.onInstalled.addListener(() => {
+  _log("onInstalled")
+})
+
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   _log("tab.onUpdated")
 
