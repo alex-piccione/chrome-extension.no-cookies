@@ -34,13 +34,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     _log("tab.onUpdated - execute script")
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      func: () => {
-        try {
-         cleaner.clean()
-        }
-        catch(error)
-        { _log(`Tab: {tab.url}. Error: {error}`) }
-        },
+      func: cleaner.clean,
       args: [config, actionsForAny],
     })
   }

@@ -10,10 +10,6 @@ export default {
       ]      
     },
     {
-      url: "www.geeksforgeeks.org",
-      actions: [{ remove_element: "div.fc-consent-root" }],
-    },
-    {
       url: "stackify.com",
       actions: [
         {
@@ -24,9 +20,9 @@ export default {
       ],
     },
     {
-      url: "www.aranzulla.it",
+      url: "aranzulla.it",
       actions: [
-        { remove_element: "div#iubenda-cs-banner" },
+        { remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"  },
         {
           description: "Reset the web page scrolling functionality",
           type: "restore scrolling",
@@ -36,11 +32,7 @@ export default {
       ],
     },
     {
-      url: "www.letuelezioni.it",
-      actions: [{ remove_element: "div#pp", repeat: "3 times, every 500 ms" }],
-    },
-    {
-      url: "www.blablacar.it",
+      url: "blablacar.it",
       actions: [{ remove_element: "div#didomi-popup", repeat: "3 times, every 500 ms" }],
     },
     {
@@ -54,15 +46,15 @@ export default {
       ],
     },
     {
-      url: "www.coindesk.com",
+      url: "coindesk.com",
       actions: [{ remove_element: "div#CybotCookiebotDialog" }],
     },
     {
-      url: "www.tripadvisor.com",
+      url: "tripadvisor.com",
       actions: [{ remove_element: "div#onetrust-consent-sdk", repeat: "5 times, every 500 ms" }],
     },
     {
-      url: "www.tripadvisor.it",
+      url: "tripadvisor.it",
       actions: [{ remove_element: "div#onetrust-consent-sdk", repeat: "5 times, every 500 ms"}]
     },
     {
@@ -83,11 +75,11 @@ export default {
       actions: [{ remove_element: "div#qc-cmp2-container" }],
     },
     {
-      url: "www.hsbc.co.uk",
+      url: "hsbc.co.uk",
       actions: [{ remove_element: "div#__tealiumGDPRecModal", repeat: "2 times, every 300 ms" }],
     },
     {
-      url: "www.sitepoint.com",
+      url: "sitepoint.com",
       actions: [{ remove_element: "div#qc-cmp2-container" }],
     },
     {
@@ -95,11 +87,11 @@ export default {
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     {
-      url: "www.spguides.com",
+      url: "spguides.com",
       actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
     },
     {
-      url: "www.cyberciti.biz",
+      url: "cyberciti.biz",
       actions: [{ remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" }],
     },
     {
@@ -110,7 +102,7 @@ export default {
       ],
     },
     {
-      url: "www.pisos.com",
+      url: "pisos.com",
       actions: [{ remove_element: "div#didomi-host" }, { remove_element: "div[style*='z-index']" }],
     },
     {
@@ -118,7 +110,7 @@ export default {
       actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
     },
     {
-      url: "www.ryadel.com",
+      url: "ryadel.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     {
@@ -154,24 +146,19 @@ export default {
       actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
     },
     {
-      url: "www.geeksforgeeks.org",
-      actions: [{ remove_element: "div.fc-consent-root" }],
-    },
-    {
-      url: "www.tomshardware.com",
+      url: "tomshardware.com",
       actions: [{ remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
     },
     {
-      url: "www.techradar.com",
+      url: "techradar.com",
       actions: [        
         { remove_element: "div#qc-cmp2-container" }, 
         { remove_element: "div#slice-container-newsletterForm-exitIntent" },
         { remove_element: ".sp_message_container_808540", repeat: "3 times, every 1500 ms" },
-        { type: "remove iframes" },
-        { type: "restore scrolling" }],
+        { remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"}]
     },
     {
-      url: "www.koskila.net",
+      url: "koskila.net",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     {
@@ -179,11 +166,11 @@ export default {
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper"}]
     },
     {
-      urL: "www.baeldung.com",
+      urL: "baeldung.com",
       actions: [ { remove_element: "div#qc-cmp2-container", repeat: "3 times, every 500 ms",}]
     },
     {
-      url: "www.thewindowsclub.com",
+      url: "thewindowsclub.com",
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }]
     },
     {
@@ -191,11 +178,11 @@ export default {
       actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     {
-      url: "www.wikihow.it",
+      url: "wikihow.it",
       actions: [{ remove_element: "div.fc-consent-root"}]
     },
     {
-      url: "www.zoopla.co.uk",
+      url: "zoopla.co.uk",
       actions: [{ remove_element: "div#gdpr-consent-tool-wrapper", repeat: "3 times, every 500 ms" }]
     },
     {
@@ -207,22 +194,15 @@ export default {
       actions: [{remove_element: "div#qc-cmp2-container", repeat: "10 times, every 1500 ms"}]
     },
     {
-      url: "www.letuelezioni.it",
-      actions: [{ remove_element: "div#pp"}]
+      url: "letuelezioni.it",
+      actions: [{ remove_element: "div#pp", repeat: "3 times, every 500 ms" }],
     },
-
     {
       url: "es.wallapop.com",
       actions: [{remove_element: "div#onetrust-consent-sdk", repeat: "10 times, every 500 ms"}]
     },
     {
-      url: "www.techradar.com",
-      actions: [
-        { remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"},
-        { remove_element: "div#qc-cmp2-container" }, { remove_element: "div#slice-container-newsletterForm-exitIntent" }],
-    },
-    {
-      url: "www.expertreviews.co.uk",
+      url: "expertreviews.co.uk",
       actions: [{ remove_element: "div[id^=sp_message_container_]", repeat: "5 times, every 500 ms"},
       { remove_class_from_html: "sp_message_open"}]
     },
@@ -240,7 +220,7 @@ export default {
       ]
     },
     {
-      url: "www.cherry-world.com",
+      url: "cherry-world.com",
       actions: [
         { remove_element: "div#usercentrics-root", repeat: "6 times, every 500 ms"},
         { remove_class_from_body: "overflowHidden", repeat: "6 times, every 1000 ms"}
@@ -251,7 +231,7 @@ export default {
       actions: [{ remove_element: "div#ez-cmpv2-container"}]
     },
     {
-      url: "www.oraridiapertura24.it",
+      url: "oraridiapertura24.it",
       actions: [{remove_element: "div#qc-cmp2-container"}]
     },
     {
@@ -259,15 +239,11 @@ export default {
       actions: [{remove_element: "div#ez-cmpv2-container"}]
     },
     {
-      url: "www.autoscout24.it",
+      url: "autoscout24.it",
       actions: [{remove_element: "div#as24-cmp-popup", repeat: "3 times, every 500 ms"}]
     },
     {
-      url: "www.letuelezioni.it",
-      actions: [{remove_element: "div#pp"}]
-    },
-    {
-      url :"www.moto.it",
+      url :"moto.it",
       note: "it does not work whan open the page inbackground. I don't know why.",
       actions: [
         { remove_element: "div#iubenda-cs-banner", repeat: "30 times, every 500 ms"},
@@ -282,7 +258,7 @@ export default {
       ]
     },
     {
-      url:"www.etsy.com",
+      url:"etsy.com",
       actions: [
         { remove_element: "div#wt-portals" },
         { type: "restore scrolling" },
@@ -300,15 +276,15 @@ export default {
       ]
     },
     {
-      url: "www.advrider.com",
+      url: "advrider.com",
       actions: [ { remove_element: "div#qc-cmp2-container", repeat: "10 times, every 500 ms" }]
     },
     {
-      url: "www.geeksforgeeks.org",
+      url: "geeksforgeeks.org",
       actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
     },
     {
-      url: "www.freecodecamp.org", 
+      url: "freecodecamp.org", 
       actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
     },
     {
@@ -316,7 +292,7 @@ export default {
       actions: [{remove_element: "div#sp_message_container_1117104", repeat: "5 times, every 500 ms"}]
     },
     {
-      url: "www.timeanddate.com",
+      url: "timeanddate.com",
       actions: [{ remove_element: "div#qc-cmp2-container", repeat: "5 times, every 500 ms"}]
     },
     {
@@ -326,7 +302,7 @@ export default {
       ]
     },
     {
-      url: "www.repubblica.it",
+      url: "repubblica.it",
       actions: [{remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"}]
     }
   ],

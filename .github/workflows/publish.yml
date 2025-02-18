@@ -10,7 +10,8 @@ on:
 
 env:
   VERSION: "25.2.18-alpha"
-  ZIP_FILE: extension-${{ env.VERSION }}.zip
+  EXTENSION_ID: EXTENSION_ID
+  ZIP_FILE: extension-25.2.18-alpha.zip
 
 jobs:
   zip:
@@ -21,10 +22,10 @@ jobs:
       - name: Zip extemsion
         run: |
           zip -r extension-${{ env.VERSION }}.zip . -x "*.git" "node_modules/*"
+          echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
         # -r: recursivo
         # . : all the archive
         # -x: exclusions
-          echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
         
       - name: Upload Zip artifact
         uses: actions/upload-artifact@v4
