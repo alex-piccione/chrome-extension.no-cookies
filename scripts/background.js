@@ -1,5 +1,5 @@
 import cleaner from "./cleaner.js"
-import config from "./data/websites.js"
+import config from "../data/websites_actions.js"
 
 const _log = (msg, arg) => console.log(`[Annoyance Killer] > ${msg}`, arg)
 

@@ -1,6 +1,6 @@
 {
-  "name": "Don't bother me about cookies!",
-  "description": "Removes cookies settings annoying dialogs.",
+  "name": "Annoyance Remover",
+  "description": "Removes cookies settings annoying dialogs and ads.",
   "version": "25.2.18",
   "manifest_version": 3,
   "icons": {
@@ -12,10 +12,11 @@
   "permissions": ["activeTab", "scripting", "tabs"],
   "host_permissions": ["http://*/", "https://*/"],
   "background": {
-    "service_worker": "background.js",
+    "service_worker": "/scripts/background.js",
     "type": "module"
   },
   "action": {
+    "default_popup": "pages/popup.html",
     "default_icon": {
       "16": "/images/logo.png",
       "32": "/images/logo.png",

@@ -1,7 +1,7 @@
 # Internet Annoyance Killer
 
-This is a Chrome extension to get rid off the :cookie: settings dialog of many websites.  
-It works with Chrome and also Maxthon browser. It is not tested on other browsers.  
+This is a Chrome extension to remove annoying :cookie: settings dialogs and ads from many websites.  
+It is tested on Chrome and also Maxthon browser.
 
 ## How to install?
 
@@ -33,3 +33,7 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 Chrome extensions API reference: https://developer.chrome.com/docs/extensions/reference  
 Markdown emojis: https://github.com/markdown-templates/markdown-emojis  
+
+[Google+Chrome+Extension+deploy.md](Publish the extension)
+
+
