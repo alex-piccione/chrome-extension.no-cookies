@@ -20,9 +20,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Zip extemsion
+      - name: Zip extension
         run: |
-          zip -r extension-${{ env.VERSION }}.zip . -x "*.git" "node_modules/*"
+          zip -r extension-${{ env.VERSION }}.zip . -x ".git/" ".github/*"
           echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
         # -r: recursivo
         # . : all the archive
@@ -31,7 +31,7 @@ jobs:
       - name: Upload Zip artifact
         uses: actions/upload-artifact@v4
         with:
-          name: extension-zip
+          name: extension
           path: extension-${{ env.VERSION }}.zip
 
   publish:
@@ -41,7 +41,7 @@ jobs:
       - name: Download Zip artifact
         uses: actions/download-artifact@v4
         with:
-          name: extension-zip
+          name: extension
       - name: Install chrome-webstore-upload-cli
         run: npm install chrome-webstore-upload-cli
       - name: Publish to Chrome Web Store

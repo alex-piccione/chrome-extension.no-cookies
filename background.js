@@ -18,7 +18,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     // skip specific browsers urls to avoid extension error
     if ( tab.url?.startsWith("file:" /* local resource */)
       || tab.url?.startsWith("chrome:") || tab.url?.startsWith("chrome-extension:") /* Chrome*/ 
-      || tab.url?.startsWith("mx:") /* Maxthon */ )
+      || tab.url?.startsWith("mx:") /* Maxthon */ 
       || tab.url?.startsWith("http://localhost")) return undefined
 
     _log("tab.onUpdated - execute script")
