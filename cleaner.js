@@ -21,11 +21,15 @@ const cleaner = {
 
         setTimeout(() => { element.remove() }, 500)
       } else {
-        log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
-        if (++count < repeat.times) {
-          log(`repeat removeElement ${count}`)
-          setTimeout(() => removeElement(siteUrl, query, repeat, count), repeat.delay)
+        if (count < 5) {
+          log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
         }
+      }
+
+      // some websites keep adding the ads or they came out with scrolling
+      if (++count < repeat.times) {
+        log(`repeat removeElement ${count}`)
+        setTimeout(() => removeElement(siteUrl, query, repeat, count), repeat.delay)
       }
     }
 
@@ -96,21 +100,22 @@ const cleaner = {
     /*  Execute Actions for the specific website (if defined) and any  */
 
     const fullSiteUrl = window?.location?.hostname
-    // get domain only (bbb.ccc from aaa.bbb.ccc)
+    // get domain only (bbb.ccc from aaa.bbb.ccc) so that both wwww.domain.com and domain.com are managed
     const siteUrl = fullSiteUrl.split(".").slice(-2).join(".")
-    log(`CleanIt start for ${fullSiteUrl} (${siteUrl})...`)
+    log(`Clean start for ${fullSiteUrl} (${siteUrl})...`)
 
     const siteActions = config.sites.find((s) => s.url === siteUrl)?.actions ?? []
 
-    // acc common actions after the specific website actions
+    // add common actions after the specific website actions
     const allActions = siteActions.concat(actionsForAny)
 
     allActions.forEach((action) => {
-      const repeat = { times: 0, delay: 0 }
+      const repeat = { times: 0, delay: 1000 }
       try {
         if (action.repeat) {
           const regex = "([\\d]*) times[,\\s]*every[\\s]([\\d]*)[\\s]*ms"
           const matches = new RegExp(regex).exec(action.repeat)
+          console.log(matches[1])
           repeat.times = parseInt(matches[1])
           repeat.delay = matches.length > 2 ? parseInt(matches[2]) : 0
         }
