@@ -5,7 +5,7 @@ const _log = (msg, arg) => console.log(`[Annoyance Killer] > ${msg}`, arg)
 
 // prepare common actions
 const actionsForAny = config.sites.find((s) => s.url === "<any>").actions
-_log(`Found ${actionsForAny.length} actions to execute for any site.`)
+_log(`Found ${actionsForAny.length} actions to execute for any website.`)
 
 chrome.runtime.onInstalled.addListener(() => {
   _log("onInstalled")
