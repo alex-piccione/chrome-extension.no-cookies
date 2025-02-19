@@ -4,7 +4,7 @@ To deploy a Chrome extension using GitHub you need to use "chrome-webstore-uploa
 It requires a Client authentication with ID, Secret and Refresh Token.  
 The suggested one is the OAuth Authentication that requires a Google Cloud Platfor project and "web access consent".  
 
-
+Setting up your OAuth consent screen: <https://console.cloud.google.com/apis/credentials/consent>.  
 
 ## Deploy the Extension
 
