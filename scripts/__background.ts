@@ -1,15 +1,21 @@
-import cleaner from "./cleaner.js"
-import config from "../data/websites_actions.js"
+import cleaner from "./cleaner.ts"
+import config from "../data/websites_actions.ts"
+import { Config } from "./interfaces.ts"
 
-const _log = (msg, arg) => console.log(`[Annoyance Killer] > ${msg}`, arg)
+const _log = (msg:string, arg?:any[]) => console.log(`[Annoyance Killer] > ${msg}`, arg)
 
 // prepare common actions
-const actionsForAny = config.sites.find((s) => s.url === "<any>").actions
+const actionsForAny = config.sites.find((s) => s.url === "<any>")?.actions ?? []
 _log(`Found ${actionsForAny.length} actions to execute for any website.`)
 
 chrome.runtime.onInstalled.addListener(() => {
   _log("onInstalled")
+  chrome.action.setBadgeText({
+    text: "OFF",
+  });
 })
+
+// https://developer.chrome.com/docs/extensions/get-started/tutorial/scripts-on-every-tab?hl=en
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   _log("tab.onUpdated")
@@ -22,10 +28,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
       || tab.url?.startsWith("http://localhost")) return undefined
 
     _log("tab.onUpdated - execute script")
-    chrome.scripting.executeScript({
+    // TODO: disabled
+    /*chrome.scripting.executeScript({
       target: { tabId: tab.id },
       func: cleaner.clean,
       args: [config, actionsForAny],
-    })
+    })*/
   }
 })

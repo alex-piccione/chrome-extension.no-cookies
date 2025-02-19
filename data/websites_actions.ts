@@ -5,8 +5,8 @@ export default {
     {
       url: "<any>",
       actions: [
-        { remove_element: "div.fc-consent-root", exclude_sites: []},
-        { type: "restore scrolling" }
+        { remove_element: "div.fc-consent-root", excluded_sites: []},
+        { restore_scrolling: null }
       ]      
     },
     {
