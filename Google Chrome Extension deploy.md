@@ -1,6 +1,9 @@
 # Google Chrome Extension Deploy
 
-To publishing the Chrome Extension through GitHub you need to use "chrome-webstore-upload-cli".   
+References:  
+- https://medium.com/codex/manually-obtain-googleoauth2-access-token-with-your-web-browser-and-curl-fd93effe15ff
+  
+For publishing the Chrome Extension through GitHub you need to use "chrome-webstore-upload-cli".   
 It requires a Client authentication with ID, Secret and Refresh Token.  
 It also requires the Extension ID.  
   
@@ -18,8 +21,8 @@ For publishing through GitHub Actions, you'll need to:
 Use a "Desktop app" OAuth Client.  
 
 ```bash
-CHROME_WEB_CLIENT_ID="188141145544-ptg9shameor87q311j0b6a608a7ecvth.apps.googleusercontent.com"
-CHROME_WEB_SECRET=""
+CHROME_WEB_CLIENT_ID="..."
+CHROME_WEB_SECRET="..."
 
 AUTH_URL="https://accounts.google.com/o/oauth2/v2/auth?client_id=$CHROME_WEB_CLIENT_ID&response_type=code&scope=https://www.googleapis.com/auth/chromewebstore&redirect_uri=http://127.0.0.1"
 echo "$AUTH_URL"
