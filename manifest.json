@@ -1,6 +1,6 @@
 {
   "name": "Annoyance Remover",
-  "description": "Removes cookies settings annoying dialogs and ads.",
+  "description": "Removes cookies settings dialogs and annoying ads.",
   "version": "25.2.18",
   "manifest_version": 3,
   "icons": {
@@ -15,7 +15,8 @@
     {
       "matches": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*"],
       "js": ["scripts/content.js"],
-      "type": "module"
+      "type": "module",
+      "module": "esnext"
     }
   ],
   "action": {

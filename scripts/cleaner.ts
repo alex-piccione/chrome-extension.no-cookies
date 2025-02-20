@@ -7,8 +7,8 @@ interface Repeat {
 
 const cleaner = {
 
-  clean: (config:Config, actionsForAny:Action[]) => {
-    const log = (msg:string) => console.log(config.logPattern.replace("{msg}", `${msg}`))
+  clean: (config:Config, log:(msg:string) => void, actionsForAny:Action[]) => {
+    //const log = (msg:string) => console.log(config.logPattern.replace("{msg}", `${msg}`))
 
     const cssAnimation = "@keyframes remove_element { from { opacity:.9; } to { opacity: 0; scale: (0.1, 0.1)} }"
 
@@ -48,15 +48,12 @@ const cleaner = {
       
       // Convert NodeList to Array and use forEach instead of for...in
       Array.from(iframes).forEach((iframe: HTMLIFrameElement) => {
-          try {
-              if (iframe.parentElement) {
-                  iframe.parentElement.removeChild(iframe)
-              } else {
-                  log(`No parent element found for iframe`)
-              }
-          } catch (error) {
-              log(`Cannot remove iframe. ${error instanceof Error ? error.message : String(error)}`)
-          }
+        try {
+            if (iframe.parentElement) iframe.parentElement.removeChild(iframe)
+            else log(`No parent element found for iframe`)
+        } catch (error) {
+            log(`Cannot remove iframe. ${error instanceof Error ? error.message : String(error)}`)
+        }
       })
       
       log(`removeIframes removed ${count} iframes`)
@@ -121,10 +118,9 @@ const cleaner = {
     const fullSiteUrl = window?.location?.hostname
     // get domain only (bbb.ccc from aaa.bbb.ccc) so that both wwww.domain.com and domain.com are managed
     const siteUrl = fullSiteUrl.split(".").slice(-2).join(".")
-    log(`Clean start for ${fullSiteUrl} (${siteUrl})...`)
 
     const siteActions = config.sites.find((s) => s.url === siteUrl)?.actions ?? []
-
+    log(`Clean start for ${fullSiteUrl} (${siteUrl})  (Site Actions: ${siteActions.length})...`)
     // add common actions after the specific website actions
     const allActions = siteActions.concat(actionsForAny)
 
@@ -138,7 +134,6 @@ const cleaner = {
           const matches = new RegExp(regex).exec(action.repeat)
           if (matches)
           {
-            console.log(matches[1])
             repeat.times = parseInt(matches[1])
             repeat.delay = matches.length > 2 ? parseInt(matches[2]) : 0
           }          
@@ -147,15 +142,20 @@ const cleaner = {
         }
       }
 
+      alert(action.type)
+
       switch (action.type) {
         case "remove_element":
+          alert("remove element")
           removeElement(siteUrl, (action as RemoveElement).remove_element, repeat)
           break
         case "restore_scrolling":
+          alert("restore scrolling")
           restoreScrolling()
           break
-        //default:
-        //  throw new Error(`${action.type} is not managed!`)               
+        case undefined:
+          log("Action type is undefined!")
+          throw new Error(`action.type is undefined`)               
       }
 
       /*

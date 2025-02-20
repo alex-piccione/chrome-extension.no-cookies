@@ -33,8 +33,12 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 ### Build
 
-Coe is in TypeScript and requires to be builded.  
-``tsc ``
+Code is in TypeScript and requires to be builded.  
+``tsc ...`` uses teh global installed TypeScript, 
+while ``npx tsc`` will use the library from node_modules.  
+  
+We use difefrent source file and imports, so code needs to be build to create modules.  
+Parsel is simple and requires zero configuration , so we use it instead of the more complete  Webpack.  
 
 ### Chrome Extension publication
 
@@ -42,5 +46,3 @@ Chrome extensions API reference: https://developer.chrome.com/docs/extensions/re
 Markdown emojis: https://github.com/markdown-templates/markdown-emojis  
 
 [Google+Chrome+Extension+deploy.md](Publish the extension)
-
-

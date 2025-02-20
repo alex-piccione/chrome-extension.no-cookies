@@ -7,7 +7,7 @@
         "types": ["chrome"],
         "noImplicitAny": true,
         "noImplicitReturns": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
     },
     "include": ["scripts/**/*.ts"],
     "exclude": ["node_modules"]
