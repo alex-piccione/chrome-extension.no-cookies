@@ -150,10 +150,12 @@ const cleaner = {
       switch (action.type) {
         case "remove_element":
           removeElement(siteUrl, (action as RemoveElement).remove_element, repeat)
+          break
         case "restore_scrolling":
           restoreScrolling()
-        default:
-          throw new Error(`${action.type} is not managed!`);                    
+          break
+        //default:
+        //  throw new Error(`${action.type} is not managed!`)               
       }
 
       /*

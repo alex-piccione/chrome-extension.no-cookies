@@ -1,6 +1,6 @@
-import cleaner from "./cleaner.ts"
-import config from "../data/websites_actions.ts"
-import { Config } from "./interfaces.ts"
+import cleaner from "./cleaner"
+import config from "../data/websites_actions"
+import { Config } from "./interfaces"
 
 const _log = (msg:string, arg?:any[]) => console.log(`[Annoyance Killer] > ${msg}`, arg)
 

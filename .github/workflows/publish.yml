@@ -20,10 +20,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          npm run build
+
       - name: Zip extension
         run: |
-          zip -r extension-${{ env.VERSION }}.zip . -x ".git/" ".github/*"
+          cp manifest.json dist/
+          cp pages/* dist/pages/
+          zip extension-${{ env.VERSION }}.zip /dist -r
           echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
+        # zip -r extension-${{ env.VERSION }}.zip . -x ".git/" ".github/*"
         # -r: recursivo
         # . : all the archive
         # -x: exclusions

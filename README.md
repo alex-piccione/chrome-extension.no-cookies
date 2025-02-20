@@ -31,6 +31,13 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 ## For developers
 
+### Build
+
+Coe is in TypeScript and requires to be builded.  
+``tsc ``
+
+### Chrome Extension publication
+
 Chrome extensions API reference: https://developer.chrome.com/docs/extensions/reference  
 Markdown emojis: https://github.com/markdown-templates/markdown-emojis  
 
