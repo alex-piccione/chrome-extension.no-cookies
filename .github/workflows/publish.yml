@@ -9,9 +9,9 @@ on:
       - publish
 
 env:
-  VERSION: "25.2.18-alpha"
   _EXTENSION_ID: lphcdnekdljjjfhdhpadlglpejbocdem
   EXTENSION_ID: bpfohppedganilogpplkomnjlleijibp
+  VERSION: "25.2.18-alpha"  
   ZIP_FILE: extension-25.2.18-alpha.zip
 
 jobs:
@@ -34,10 +34,12 @@ jobs:
 
       - name: Zip extension
         run: |
-          zip extension-${{ env.VERSION }}.zip /dist -r
-          echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
-        # zip -r extension-${{ env.VERSION }}.zip . -x ".git/" ".github/*"
-        # -r: recursivo
+          echo zip -r ${{ env.ZIP_FILE }} . -x ".git/" ".github/*" "node_modules/*" ".prettierrc"
+          zip -r ${{ env.ZIP_FILE }} \ 
+            manifest.json \
+            scripts/*
+          echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
+        # -r: recursive
         # . : all the archive
         # -x: exclusions
         
@@ -45,9 +47,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: extension
-          path: extension-${{ env.VERSION }}.zip
+          path: ${{ env.ZIP_FILE }}
 
   publish:
+    # disabled until we have the refresh token
+    if: false 
     needs: zip
     runs-on: ubuntu-24.04
     steps:
