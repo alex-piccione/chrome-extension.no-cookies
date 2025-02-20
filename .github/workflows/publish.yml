@@ -10,7 +10,8 @@ on:
 
 env:
   VERSION: "25.2.18-alpha"
-  EXTENSION_ID: lphcdnekdljjjfhdhpadlglpejbocdem
+  _EXTENSION_ID: lphcdnekdljjjfhdhpadlglpejbocdem
+  EXTENSION_ID: bpfohppedganilogpplkomnjlleijibp
   ZIP_FILE: extension-25.2.18-alpha.zip
 
 jobs:
@@ -25,10 +26,14 @@ jobs:
         run: |
           npm run build
 
+      - name: Copy required files
+        run: |
+          cp -r manifest.json dist/
+          mkdir -p dist/pages && cp -r pages/* dist/pages/
+          mkdir -p dist/images && cp -r images/* dist/images/
+
       - name: Zip extension
         run: |
-          cp manifest.json dist/
-          cp pages/* dist/pages/
           zip extension-${{ env.VERSION }}.zip /dist -r
           echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
         # zip -r extension-${{ env.VERSION }}.zip . -x ".git/" ".github/*"

@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*"],
-      "js": ["dist/scripts/content.ts"],
+      "js": ["scripts/content.js"],
       "type": "module"
     }
   ],
