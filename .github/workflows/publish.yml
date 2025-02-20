@@ -34,10 +34,7 @@ jobs:
 
       - name: Zip extension
         run: |
-          echo zip -r ${{ env.ZIP_FILE }} . -x ".git/" ".github/*" "node_modules/*" ".prettierrc"
-          zip -r ${{ env.ZIP_FILE }} \ 
-            manifest.json \
-            scripts/*
+          zip -r ${{ env.ZIP_FILE }} dist
           echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
         # -r: recursive
         # . : all the archive
