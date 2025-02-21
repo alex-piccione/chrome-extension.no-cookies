@@ -1,4 +1,4 @@
-name: Create Release with Chrome Extension
+name: Create Release with ZIP
 
 on:
   push:
