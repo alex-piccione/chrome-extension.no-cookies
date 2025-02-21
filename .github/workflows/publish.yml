@@ -9,8 +9,9 @@ on:
       - publish
 
 env:
-  VERSION: "25.2.18-alpha"
-  EXTENSION_ID: lphcdnekdljjjfhdhpadlglpejbocdem
+  _EXTENSION_ID: lphcdnekdljjjfhdhpadlglpejbocdem
+  EXTENSION_ID: bpfohppedganilogpplkomnjlleijibp
+  VERSION: "25.2.18-alpha"  
   ZIP_FILE: extension-25.2.18-alpha.zip
 
 jobs:
@@ -20,14 +21,29 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Copy required files
+        run: |
+          cp -r manifest.json dist/
+          mkdir -p dist/pages && cp -r pages/* dist/pages/
+          mkdir -p dist/images && cp -r images/* dist/images/
+
       - name: Zip extension
         run: |
-          zip -r extension-${{ env.VERSION }}.zip . -x ".git/*" ".github/*" ",prettierrc"
-          echo "### Zip: extension-${{ env.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
-        # -r: recursivo
+          zip -r ${{ env.ZIP_FILE }} dist
+          echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
+        # -r: recursive
         # . : all the archive
         # -x: exclusions
         
+          path: ${{ env.ZIP_FILE }}
+    # disabled until we have the refresh token
+    if: false 
       - name: Install chrome-webstore-upload-cli
         run: npm install chrome-webstore-upload-cli
       - name: Publish to Chrome Web Store

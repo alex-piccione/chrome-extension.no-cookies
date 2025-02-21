@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "ESNext",
+        "module": "ESNext",
+        "strict": true,
+        "types": ["chrome"],
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+    },
+    "include": ["scripts/**/*.ts"],
+    "exclude": ["node_modules"]
+}
