@@ -2,7 +2,7 @@
 
 [![Publish on Chrome Web Store](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml)  
 
-[![Create Release with Chrome Extension](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml)  
+[![Create Release with ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml)  
 
 This is a Chrome extension to remove annoying :cookie: settings dialogs and ads from many websites.  
 It is tested on Chrome and also Maxthon browser.  
@@ -10,7 +10,7 @@ Not yet published on Chrome Web Store (it is a nightmare to do it).
 
 ## How to install?
 
-[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/runs/13453987380/artifacts/2629253065).  [Download the extension Release](https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/25.2.21.31-alpha/Annouance-Remover-25.2.21.31-alpha.zip)
+[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/25.2.21.31-alpha/Annouance-Remover-25.2.21.31-alpha.zip)
   
 Open the browser Extensions Manager panel (for Chrome you can use the URL <"chrome://extensions/">).  
 Enable the _Developer Mode_.  
