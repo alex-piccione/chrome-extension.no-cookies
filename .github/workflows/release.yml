@@ -30,7 +30,7 @@ jobs:
 
       - name: Zip the extension
         run: |
-          zip -r chrome-extension.zip dist/*
+          zip -r chrome-extension.zip dist
         env:
           ZIP_FILE: chrome-extension.zip
 
