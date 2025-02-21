@@ -31,7 +31,8 @@ jobs:
 
       - name: Zip the extension
         # -j remove "junk" path, in thei case the "dist" folder
-        run: zip -j chrome-extension.zip dist/**/*
+        # -r recursive
+        run: zip -r -j chrome-extension.zip dist/*
         env:
           ZIP_FILE: chrome-extension.zip
 
