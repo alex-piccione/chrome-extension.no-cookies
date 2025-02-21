@@ -7,8 +7,8 @@ on:
   workflow_dispatch:  # Allows manual triggering of the workflow
 
 env: 
-  VERSION: "25.2.18-alpha"  
-  ZIP_FILE: extension-25.2.18-alpha.zip
+  VERSION: "25.2.18.${{ github.run_number }}-alpha"  
+  ZIP_FILE: extension-25.2.18.${{ github.run_number }}-alpha.zip
 
 jobs:
   build-and-release:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Zip the extension
         run: |
-          zip -r chrome-extension.zip dist/
+          zip -r chrome-extension.zip dist/*
         env:
           ZIP_FILE: chrome-extension.zip
 
@@ -43,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: v${{ github.run_number }}
-          release_name: Chrome Extension Release v${{ github.run_number }}
+          release_name: Chrome Extension Release v${{ env.VERSION }}
           body: "This release contains the latest version of the Chrome extension."
           draft: false
           prerelease: false
@@ -56,5 +56,6 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: chrome-extension.zip
-          asset_name: chrome-extension.zip
+          #asset_name: chrome-extension.zip
+          asset_name: ${{ env.ZIP_FILE }}
           asset_content_type: application/zip
