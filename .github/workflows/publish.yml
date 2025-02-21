@@ -49,8 +49,8 @@ jobs:
         with:
           name: ${{ env.ZIP_FILE }}
           path: dist
-        run: |
-          echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
+        #run: |
+        #  echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
 
   update-readme:
     runs-on: ubuntu-latest
