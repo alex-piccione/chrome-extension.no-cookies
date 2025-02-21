@@ -32,17 +32,26 @@ jobs:
           cp -r manifest.json dist/
           mkdir -p dist/pages && cp -r pages/* dist/pages/
           mkdir -p dist/images && cp -r images/* dist/images/
-
-      - name: Zip extension
-        run: |
-          zip -r ${{ env.ZIP_FILE }} dist
-          echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
+      
+      # Not required while we use the Artifact
+      #- name: Zip extension
+      #  run: |
+      #    zip -r ${{ env.ZIP_FILE }} dist
+      #    echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
         
-      - name: Upload Zip artifact
+      #- name: Upload Zip artifact
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: extension
+      #    path: ${{ env.ZIP_FILE }}
+      
+      - name: Create Zip artifact
         uses: actions/upload-artifact@v4
         with:
-          name: extension
-          path: ${{ env.ZIP_FILE }}
+          name: ${{ env.ZIP_FILE }}
+          path: dist
+        run: |
+          echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
 
   update-readme:
     runs-on: ubuntu-latest
