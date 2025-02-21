@@ -6,8 +6,9 @@ on:
       - release  # Trigger workflow on pushes to the release branch
   workflow_dispatch:  # Allows manual triggering of the workflow
 
-VERSION: "25.2.18-alpha"  
-ZIP_FILE: extension-25.2.18-alpha.zip
+env: 
+  VERSION: "25.2.18-alpha"  
+  ZIP_FILE: extension-25.2.18-alpha.zip
 
 jobs:
   build-and-release:
