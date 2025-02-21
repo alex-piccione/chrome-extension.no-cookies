@@ -1,4 +1,4 @@
-import { Config, Action, RemoveElement } from "./interfaces"
+import { Config, Action, RemoveElement, isRemoveElement, isRestoreScrolling, isRemoveClassFromHtml, isRemoveClassFromBody, isRemoveIFrames, isRemoveScripts } from "./interfaces"
 
 interface Repeat {
   times: number,
@@ -8,14 +8,13 @@ interface Repeat {
 const cleaner = {
 
   clean: (config:Config, log:(msg:string) => void, actionsForAny:Action[]) => {
-    //const log = (msg:string) => console.log(config.logPattern.replace("{msg}", `${msg}`))
 
     const cssAnimation = "@keyframes remove_element { from { opacity:.9; } to { opacity: 0; scale: (0.1, 0.1)} }"
 
     const removeElement = (siteUrl:string, query:string, repeat:Repeat, count = 0) => {
       log(`remove element ${query}`)
       const element = document.querySelector(query)
-      // log(`removeElement "${query}" from ${siteUrl}.`)
+
       if (element) {
         var style = document.createElement("style")
         style.appendChild(document.createTextNode(cssAnimation))
@@ -29,19 +28,18 @@ const cleaner = {
 
         setTimeout(() => { element.remove() }, 500)
       } else {
-        if (count < 5) {
+        if (count < 3) // avoid logging forever
           log(`Cannot remove element "${query}" because cannot find it in ${siteUrl}.`)
-        }
       }
 
-      // some websites keep adding the ads or they came out with scrolling
+      // some websites keep adding the ads or they came out again when user scroll the page
       if (++count < repeat.times) {
         log(`repeat removeElement ${count}`)
         setTimeout(() => removeElement(siteUrl, query, repeat, count), repeat.delay)
       }
     }
 
-    const removeIframes = (): void => {
+    const removeIFrames = (): void => {
       const iframes = document.querySelectorAll("iframe")
       const count = iframes.length
       log(`removeIframes found ${count} iframes`)
@@ -49,10 +47,10 @@ const cleaner = {
       // Convert NodeList to Array and use forEach instead of for...in
       Array.from(iframes).forEach((iframe: HTMLIFrameElement) => {
         try {
-            if (iframe.parentElement) iframe.parentElement.removeChild(iframe)
-            else log(`No parent element found for iframe`)
+          if (iframe.parentElement) iframe.parentElement.removeChild(iframe)
+          else log(`No parent element found for iframe`)
         } catch (error) {
-            log(`Cannot remove iframe. ${error instanceof Error ? error.message : String(error)}`)
+          log(`Cannot remove iframe. ${error instanceof Error ? error.message : String(error)}`)
         }
       })
       
@@ -66,15 +64,12 @@ const cleaner = {
       
       // Convert HTMLCollection to Array and use forEach
       Array.from(scripts).forEach((script: HTMLScriptElement) => {
-          try {
-              if (script.parentElement) {
-                  script.parentElement.removeChild(script)
-              } else {
-                  log(`No parent element found for script`)
-              }
-          } catch (error) {
-              log(`Cannot remove script. ${error instanceof Error ? error.message : String(error)}`)
-          }
+        try {
+          if (script.parentElement) script.parentElement.removeChild(script)
+          else log(`No parent element found for script`)
+        } catch (error) {
+          log(`Cannot remove script. ${error instanceof Error ? error.message : String(error)}`)
+        }
       })
       
       log(`removeScripts removed ${count} scripts`)
@@ -103,23 +98,20 @@ const cleaner = {
       const html = document.querySelector("html") as HTMLHtmlElement
       const body = document.querySelector("body") as HTMLBodyElement
   
-      if (html) {
-          html.style.overflow = "inherit"
-          html.style.overflowX = "inherit"
-      }
-  
-      if (body) {
-          body.style.overflow = "inherit"
-      }
+      html.style.overflow = "inherit"
+      html.style.overflowX = "inherit"
+
+      body.style.overflow = "inherit"
     }
 
-    /*  Execute Actions for the specific website (if defined) and any  */
+    /*  Execute Actions for the specific website (if defined) and the  common ones */
 
-    const fullSiteUrl = window?.location?.hostname
     // get domain only (bbb.ccc from aaa.bbb.ccc) so that both wwww.domain.com and domain.com are managed
+    const fullSiteUrl = window?.location?.hostname    
     const siteUrl = fullSiteUrl.split(".").slice(-2).join(".")
 
     const siteActions = config.sites.find((s) => s.url === siteUrl)?.actions ?? []
+
     log(`Clean start for ${fullSiteUrl} (${siteUrl})  (Site Actions: ${siteActions.length})...`)
     // add common actions after the specific website actions
     const allActions = siteActions.concat(actionsForAny)
@@ -142,33 +134,15 @@ const cleaner = {
         }
       }
 
-      alert(action.type)
-
-      switch (action.type) {
-        case "remove_element":
-          alert("remove element")
-          removeElement(siteUrl, (action as RemoveElement).remove_element, repeat)
-          break
-        case "restore_scrolling":
-          alert("restore scrolling")
-          restoreScrolling()
-          break
-        case undefined:
-          log("Action type is undefined!")
-          throw new Error(`action.type is undefined`)               
-      }
-
-      /*
-      if (action.remove_element) removeElement(siteUrl, action.remove_element, repeat)
-      else if (action.type == "remove element") removeElement(siteUrl, action.querySelector, repeat)
-      else if (action.remove_class_from_html) removeClassFromHtml(action.remove_class_from_html, repeat)
-      else if (action.remove_class_from_body) removeClassFromBody(action.remove_class_from_body, repeat)
-      else if (action.type === "restore scrolling") restoreScrolling()
-      else if (action.type === "remove iframes") removeIframes()
-      else if (action.type === "remove scripts") removeScripts()
-      */
+      if (isRemoveElement(action)) removeElement(siteUrl, action.remove_element, repeat)
+      else if (isRestoreScrolling(action)) restoreScrolling()
+      else if (isRemoveClassFromHtml(action)) removeClassFromHtml(action.remove_class_from_html, repeat)
+      else if (isRemoveClassFromBody(action)) removeClassFromBody(action.remove_class_from_body, repeat)
+      else if (isRemoveIFrames(action)) removeIFrames()
+      else if (isRemoveScripts(action)) removeScripts()
+      else
+        throw new Error(`action is undefined. ${action}`)             
     })  
-
   }
 }
 

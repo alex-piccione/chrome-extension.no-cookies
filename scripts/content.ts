@@ -3,7 +3,6 @@ import config from "../data/websites_actions"
 import {Config, Action } from "./interfaces"
 
 const manifest = chrome.runtime.getManifest();
-
 //console.log(manifest.version); // Access the version
 //console.log(manifest.description); // Access the description
 

@@ -1,6 +1,5 @@
 export default {
   version: "1.0",
-  logPattern: "[1.0] {msg}",
   sites: [
     {
       url: "<any>",
@@ -95,8 +94,8 @@ export default {
         { remove_class_from_html: "has--adblock", repeat: "15 times, every 500 ms"},
         { remove_class_from_body: "noScroll", repeat: "15 times, every 500 ms"},
         { remove_element: "div#rcsad_TopLeft_wrapper"},
-        { type: "remove iframes" },
-        { type: "remove scripts" },
+        { remove_iframes: null },
+        { remove_scripts: null },
       ]
     },
     {
@@ -135,7 +134,7 @@ export default {
     },
     {
       urL: "baeldung.com",
-      actions: [ { remove_element: "div#qc-cmp2-container", repeat: "3 times, every 500 ms",}]
+      actions: [{ remove_element: "div#qc-cmp2-container", repeat: "3 times, every 500 ms",}]
     },
     {
       url: "thewindowsclub.com",
@@ -219,21 +218,19 @@ export default {
     },
     {
       url: "dotnettutorials.net",
-      actions: [
-        {remove_element: "div#ez-cmpv2-container", repeat: "5 times, every 500 ms"}
-      ]
+      actions: [{remove_element: "div#ez-cmpv2-container", repeat: "5 times, every 500 ms"}]
     },
     {
       url: "advrider.com",
-      actions: [ { remove_element: "div#qc-cmp2-container", repeat: "10 times, every 500 ms" }]
+      actions: [{ remove_element: "div#qc-cmp2-container", repeat: "10 times, every 500 ms" }]
     },
     {
       url: "geeksforgeeks.org",
-      actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
+      actions: [{remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
     },
     {
       url: "freecodecamp.org", 
-      actions: [ {remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
+      actions: [{remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
     },
     {
       url: "dnschecker.org",
