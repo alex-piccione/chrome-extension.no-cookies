@@ -8,7 +8,7 @@ Not yet published on Chrome Web Store (it is a nightmare to do it).
 
 ## How to install?
 
-[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/runs/13453987380/artifacts/2629253065)
+[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/runs/13453987380/artifacts/2629253065).  
 Open the browser Extensions Manager panel (for Chrome you can use the URL <"chrome://extensions/">).  
 Enable the _Developer Mode_.  
 With _Developer Mode_ **on**, you can use the "Load unpacked" command and point to the folder where you extracted this extension.  
@@ -18,11 +18,11 @@ If you are already in a page with opened Cookies settings panels, you need to re
 ### Known websites where the extension does not work
 
 (for the dynamic nature of websites this list cannot be 100% accurate/updated)  
-|     | Site                | Status        | Note                                                               |
-| --- | ------------------- | ------------- | ------------------------------------------------------------------ |
-| :x: | www.telegraph.co.uk | Can't be done | Requires subscription                                              |
-| :x: | www.timeanddate.com | Not solved    | Removing the cookies panels seems to breack some functionalities   |
-| :x: | corriere.it         | Not solved    | After many pages reload tehre is a redirect to a subscription page |
+| Site                | Status        | Note                                                               |
+| ------------------- | ------------- | ------------------------------------------------------------------ |
+| www.telegraph.co.uk | Can't be done | Requires subscription                                              |
+| www.timeanddate.com | Not solved    | Removing the cookies panels seems to breack some functionalities   |
+| corriere.it         | Not solved    | After many pages reload tehre is a redirect to a subscription page |
 
 ## What can I do if I found a website that is not managed?
 
