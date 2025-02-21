@@ -35,19 +35,24 @@ jobs:
         env:
           ZIP_FILE: chrome-extension.zip
 
-      # Create a release and upload the artifact
+      # Create a release and capture upload URL
       - name: Create Release
-        uses: ncipollo/release-action@v1
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag: v${{ github.run_number }}
-          name: Chrome Extension Release v${{ github.run_number }}
+          tag_name: v${{ github.run_number }}
+          release_name: Chrome Extension Release v${{ github.run_number }}
           body: "This release contains the latest version of the Chrome extension."
           draft: false
-          prerelease: true
+          prerelease: false
 
       # Upload the zip file to the release
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: chrome-extension.zip
