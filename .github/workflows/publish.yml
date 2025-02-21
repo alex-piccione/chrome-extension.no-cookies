@@ -40,8 +40,11 @@ jobs:
         # -r: recursive
         # . : all the archive
         # -x: exclusions
+
+      - name: Create Artifact
         
-          path: ${{ env.ZIP_FILE }}
+        
+
     # disabled until we have the refresh token
     if: false 
       - name: Install chrome-webstore-upload-cli
