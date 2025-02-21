@@ -49,8 +49,6 @@ jobs:
         with:
           name: ${{ env.ZIP_FILE }}
           path: dist
-        #run: |
-        #  echo "### Zip: ${{ env.ZIP_FILE }}" >> $GITHUB_STEP_SUMMARY
 
   update-readme:
     runs-on: ubuntu-latest
@@ -61,10 +59,11 @@ jobs:
           ref: main
 
       - name: Update README.md
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          ARTIFACT_URL=$(gh api "/repos/${{ github.repository }}/actions/artifacts" --jq '.artifacts[0].archive_download_url')
-          echo "Updating README.md with artifact link..."
-          sed -i "s|Download the extension ZIP|[Download the extension ZIP]($ARTIFACT_URL)|" README.md
+          ARTIFACT_URL=$(gh api "/repos/alex-piccione/chrome-extension.no-cookies/actions/artifacts" --jq '.artifacts[0].archive_download_url')
+          echo "Artifact URL: $ARTIFACT_URL"
 
       - name: Commit changes
         run: |
