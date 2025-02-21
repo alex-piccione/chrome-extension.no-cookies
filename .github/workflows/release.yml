@@ -67,12 +67,12 @@ jobs:
         with:
           ref: main
 
-      - name: Debug Release Info
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api "/repos/${{ github.repository }}/releases/latest" | jq '.'
-          gh api "/repos/${{ github.repository }}/releases/latest" | jq '.assets'
+    #  - name: Debug Release Info
+    #    env:
+    #      GH_TOKEN: ${{ github.token }}
+    #    run: |
+    #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.'
+    #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.assets'
 
       - name: Get Release URL
         env:
