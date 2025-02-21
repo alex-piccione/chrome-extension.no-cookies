@@ -33,6 +33,13 @@ jobs:
         env:
           ZIP_FILE: chrome-extension.zip
 
+      - name: Get Release URL
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.ZIP_FILE }}") | .browser_download_url')
+          echo "RELEASE_URL=${RELEASE_URL}" >> $GITHUB_ENV
+
       # Create a release and capture upload URL
       - name: Create Release
         id: create_release
