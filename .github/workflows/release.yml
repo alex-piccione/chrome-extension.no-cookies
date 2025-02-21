@@ -89,10 +89,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo get latest release URL 
-          RELEASE_URL="https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/${{ env.VERSION }}/${{ env.ZIP_FILE }}"          
-          echo "Release ZIP URL: $RELEASE_URL"
+          ZIP_URL="https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/${{ env.VERSION }}/${{ env.ZIP_FILE }}"          
+          echo "Release ZIP URL: $ZIP_URL"
           echo "Updating README.md with release link..."
-          sed -i "s@\[${{ env.LINK_TEXT}}\]\(.*\)@[${{ env.LINK_TEXT}}]($RELEASE_URL)@" README.md
+          sed -i "s@\[${{ env.LINK_TEXT}}\]\(.*\)@[${{ env.LINK_TEXT}}]($ZIP_URL)@" README.md
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions"
           git add README.md
