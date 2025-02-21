@@ -74,21 +74,21 @@ jobs:
     #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.'
     #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.assets'
 
-      - name: Get Release URL
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.VERSION }}") | .browser_download_url')
-          echo "RELEASE_URL=${RELEASE_URL}" >> $GITHUB_ENV
-          echo "RELEASE_URL=${RELEASE_URL}"
-          echo "### RELEASE_URL: ${RELEASE_URL}" >> $GITHUB_STEP_SUMMARY
+    #  - name: Get Release URL
+    #    env:
+    #      GH_TOKEN: ${{ github.token }}
+    #    run: |
+    #      RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.VERSION }}") | .browser_download_url')
+    #      echo "RELEASE_URL=${RELEASE_URL}" >> $GITHUB_ENV
+    #      echo "RELEASE_URL=${RELEASE_URL}"
+    #      echo "### RELEASE_URL: ${RELEASE_URL}" >> $GITHUB_STEP_SUMMARY
 
       - name: Update README with Release link
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo get latest release URL        
-          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.ZIP_FILE }}") | .browser_download_url')          
+          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.VERSION }}") | .browser_download_url')          
           echo "Release URL: $RELEASE_URL"
           echo "Updating README.md with release link..."
           sed -i "s@\[Download the extension Release\](https[^)]*)@[Download the extension Release]($RELEASE_URL)@g" README.md
