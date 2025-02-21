@@ -58,12 +58,14 @@ jobs:
         with:
           ref: main
 
-      - name: Update README.md
+      - name: Update README with artifact link
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          ARTIFACT_URL=$(gh api "/repos/alex-piccione/chrome-extension.no-cookies/actions/artifacts" --jq '.artifacts[0].archive_download_url')
-          echo "Artifact URL: $ARTIFACT_URL"
+          ARTIFACT_URL=$(gh api "/repos/${{ github.repository }}/actions/artifacts" --jq '.artifacts[0].archive_download_url')
+          echo "Artifact URL: $ARTIFACT_URL"          
+          echo "Updating README.md with artifact link..."
+          sed -i "s|Download my artifact|[Download my artifact]($ARTIFACT_URL)|" README.md
 
       - name: Commit changes
         run: |
