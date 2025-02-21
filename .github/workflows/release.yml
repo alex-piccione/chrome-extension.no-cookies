@@ -69,7 +69,7 @@ jobs:
 
       - name: Get Release URL
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.ZIP_FILE }}") | .browser_download_url')
           echo "RELEASE_URL=${RELEASE_URL}" >> $GITHUB_ENV
