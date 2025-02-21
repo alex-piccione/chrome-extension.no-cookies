@@ -9,6 +9,7 @@ on:
 env: 
   VERSION: "25.2.21.${{ github.run_number }}-alpha"  
   ZIP_FILE: Annouance-Remover-25.2.21.${{ github.run_number }}-alpha.zip
+  LINK_TEXT: Download the extension ZIP
 
 jobs:
   build-and-release:
@@ -91,7 +92,7 @@ jobs:
           RELEASE_URL="https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/${{ env.VERSION }}/${{ env.ZIP_FILE }}"          
           echo "Release ZIP URL: $RELEASE_URL"
           echo "Updating README.md with release link..."
-          sed -i "s@\[Download the extension Release\]\(.*\)@[Download the extension Release]($RELEASE_URL)@" README.md
+          sed -i "s@\[${{ env.LINK_TEXT}}\]\(.*\)@[${{ env.LINK_TEXT}}]($RELEASE_URL)@" README.md
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions"
           git add README.md
