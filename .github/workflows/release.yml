@@ -30,9 +30,8 @@ jobs:
           mkdir -p dist/images && cp -r images/* dist/images/
 
       - name: Zip the extension
-        # -j remove "junk" path, in thei case the "dist" folder
-        # -r recursive
-        run: zip -r -j chrome-extension.zip dist/*
+        # have to move inside the folder to avoid having it in the zip
+        run: cd dist && zip -r chrome-extension.zip *
         env:
           ZIP_FILE: chrome-extension.zip
 
