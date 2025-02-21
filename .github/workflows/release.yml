@@ -75,7 +75,7 @@ jobs:
           RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "chrome-extension.zip") | .browser_download_url')
           echo "Release URL: $RELEASE_URL"
           echo "Updating README.md with release link..."
-          sed -i "s|Download the extension Release|[Download the extension Release]($RELEASE_URL)|" README.md
+          sed -i "s@Download the extension Release@[Download the extension Release]($RELEASE_URL)@g" README.md
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions"
           git add README.md
