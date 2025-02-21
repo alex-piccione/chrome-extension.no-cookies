@@ -9,7 +9,6 @@ on:
       - publish
 
 env:
-  _EXTENSION_ID: lphcdnekdljjjfhdhpadlglpejbocdem
   EXTENSION_ID: bpfohppedganilogpplkomnjlleijibp
   VERSION: "25.2.18-alpha"  
   ZIP_FILE: extension-25.2.18-alpha.zip
@@ -40,13 +39,23 @@ jobs:
         # -r: recursive
         # . : all the archive
         # -x: exclusions
-
-      - name: Create Artifact
         
-        
+      - name: Upload Zip artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension
+          path: ${{ env.ZIP_FILE }}
 
+  publish:
     # disabled until we have the refresh token
     if: false 
+    needs: zip
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Download Zip artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: extension
       - name: Install chrome-webstore-upload-cli
         run: npm install chrome-webstore-upload-cli
       - name: Publish to Chrome Web Store
@@ -55,9 +64,10 @@ jobs:
             --source extension-${{ env.VERSION }}.zip \
             --extension-id ${{ env.EXTENSION_ID }} \
             --client-id ${{ secrets.CHROME_CLIENT_ID }} \
-            --client-secret ${{ secrets.CHROME_CLIENT_SECRET }} 
-        #  --refresh-token ${{ secrets.CHROME_REFRESH_TOKEN }}
+            --client-secret ${{ secrets.CHROME_CLIENT_SECRET }} \
+            --refresh-token ${{ secrets.CHROME_REFRESH_TOKEN }}
         env:
           CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
           CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
