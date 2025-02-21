@@ -9,7 +9,7 @@ Not yet published on Chrome Web Store (it is a nightmare to do it).
 
 ## How to install?
 
-[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/25.2.21.31-alpha/Annouance-Remover-25.2.21.31-alpha.zip)  
+[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/25.2.21.32-alpha/Annouance-Remover-25.2.21.32-alpha.zip)
 (if link does not work get it manually: <https://github.com/alex-piccione/chrome-extension.no-cookies/releases>)
   
 Open the browser Extensions Manager panel (for Chrome you can use the URL <"chrome://extensions/">).  
