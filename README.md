@@ -1,8 +1,8 @@
 # Internet Annoyance Remover
 
-[![Publish on Chrome Web Store](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml)  
-[![Create Release with ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml)  
-
+[![Create Release with ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/release.yml) 
+[![Publish to Chrome Web Store](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml)  
+  
 This is a Chrome extension to remove annoying :cookie: settings dialogs and ads from many websites.  
 It is tested on Chrome and also Maxthon browser.  
 Not yet published on Chrome Web Store (it is a nightmare to do it).  
