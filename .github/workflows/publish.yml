@@ -66,16 +66,12 @@ jobs:
           echo "Artifact URL: $ARTIFACT_URL"          
           echo "Updating README.md with artifact link..."
           sed -i "s|Download my artifact|[Download my artifact]($ARTIFACT_URL)|" README.md
-
-      - name: Commit changes
-        run: |
+          echo Commit changes
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
           git commit -m "Update README from publish branch"
           git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish:
     # disabled until we have the refresh token
