@@ -29,8 +29,8 @@ jobs:
           mkdir -p dist/images && cp -r images/* dist/images/
 
       - name: Zip the extension
-        run: |
-          zip -r chrome-extension.zip dist
+        # -j remove "junk" path, in thei case the "dist" folder
+        run: zip -j chrome-extension.zip dist/*
         env:
           ZIP_FILE: chrome-extension.zip
 
@@ -40,7 +40,8 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:  
+        with: 
+          tag_name: ${{ env.VERSION }}
           release_name: Chrome Extension Release v${{ env.VERSION }}
           body: "This release contains the ${{ env.VERSION }} of the Chrome extension."
           draft: false
@@ -57,24 +58,40 @@ jobs:
           asset_name: ${{ env.ZIP_FILE }}
           asset_content_type: application/zip
 
-
   update-readme:
     runs-on: ubuntu-24.04
+    needs: build-and-release
     steps:
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           ref: main
 
+    #  - name: Debug Release Info
+    #    env:
+    #      GH_TOKEN: ${{ github.token }}
+    #    run: |
+    #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.'
+    #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.assets'
+
+    #  - name: Get Release URL
+    #    env:
+    #      GH_TOKEN: ${{ github.token }}
+    #    run: |
+    #      RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.VERSION }}") | .browser_download_url')
+    #      echo "RELEASE_URL=${RELEASE_URL}" >> $GITHUB_ENV
+    #      echo "RELEASE_URL=${RELEASE_URL}"
+    #      echo "### RELEASE_URL: ${RELEASE_URL}" >> $GITHUB_STEP_SUMMARY
+
       - name: Update README with Release link
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          echo get latest release URL
-          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "chrome-extension.zip") | .browser_download_url')
-          echo "Release URL: $RELEASE_URL"
+          echo get latest release URL 
+          RELEASE_URL="https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/${{ env.VERSION }}/${{ env.ZIP_FILE }}"          
+          echo "Release ZIP URL: $RELEASE_URL"
           echo "Updating README.md with release link..."
-          sed -i "s|Download the extension Release|[Download the extension Release]($RELEASE_URL)|" README.md
+          sed -i "s@\[Download the extension Release\]\(.*\)@[Download the extension Release]($RELEASE_URL)@" README.md
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions"
           git add README.md
