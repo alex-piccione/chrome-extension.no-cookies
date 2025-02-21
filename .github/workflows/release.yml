@@ -29,7 +29,8 @@ jobs:
           mkdir -p dist/images && cp -r images/* dist/images/
 
       - name: Zip the extension
-        run: zip -r chrome-extension.zip dist/*
+        # -j remove "junk" path, in thei case the "dist" folder
+        run: zip -j chrome-extension.zip dist/*
         env:
           ZIP_FILE: chrome-extension.zip
 
