@@ -18,7 +18,8 @@ export default {
       note: "it does not work when open the page inbackground. I don't know why.",
       actions: [
         { remove_element: "div#iubenda-cs-banner", repeat: "30 times, every 500 ms"},
-        { remove_element: "div.app-masthead", repeat: "5 times, every 500 ms" }
+        { remove_element: "div.app-masthead", repeat: "5 times, every 500 ms"},
+        { remove_emenet: "div#app-checkext-template", repeat: "20 times, every 500ms"}
       ]
     },
     {
