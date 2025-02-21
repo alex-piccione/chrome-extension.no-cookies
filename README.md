@@ -1,18 +1,18 @@
 # Internet Annoyance Remover
 
 [![Publish](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml/badge.svg)](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/workflows/publish.yml)  
-[Download the Zip of the Extension](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/runs/13453987380/artifacts/2629253065)  
 
 This is a Chrome extension to remove annoying :cookie: settings dialogs and ads from many websites.  
-It is tested on Chrome and also Maxthon browser.
+It is tested on Chrome and also Maxthon browser.  
+Not yet published on Chrome Web Store (it is a nightmare to do it).  
 
 ## How to install?
 
-Download this repo somewhere in your PC (<https://github.com/alex-piccione/chrome-extension.no-cookies/archive/refs/heads/main.zip>).  
-Open the browser Extensions Manager panel (for Chrome you can use the URL "chrome://extensions/").  
-Enable the Developer Mode.  
-With Developer Mode on, you can use the "Load unpacked" command and point to the folder where you extracted this repo.  
-Done. The extension is installed.  
+[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/runs/13453987380/artifacts/2629253065)
+Open the browser Extensions Manager panel (for Chrome you can use the URL <"chrome://extensions/">).  
+Enable the _Developer Mode_.  
+With _Developer Mode_ **on**, you can use the "Load unpacked" command and point to the folder where you extracted this extension.  
+Done.  
 If you are already in a page with opened Cookies settings panels, you need to reload it (CTRL+R).
   
 ### Known websites where the extension does not work
