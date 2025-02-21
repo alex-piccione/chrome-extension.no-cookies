@@ -11,8 +11,7 @@ Not yet published on Chrome Web Store (it is a nightmare to do it).
 ## How to install?
 
 [Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/actions/runs/13453987380/artifacts/2629253065).  [Download the extension Release](https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/25.2.21.29-alpha/).  
-
-
+  
 Open the browser Extensions Manager panel (for Chrome you can use the URL <"chrome://extensions/">).  
 Enable the _Developer Mode_.  
 With _Developer Mode_ **on**, you can use the "Load unpacked" command and point to the folder where you extracted this extension.  
