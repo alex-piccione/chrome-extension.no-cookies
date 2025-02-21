@@ -40,8 +40,7 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          #tag_name: v${{ github.run_number }}      
+        with:  
           release_name: Chrome Extension Release v${{ env.VERSION }}
           body: "This release contains the ${{ env.VERSION }} of the Chrome extension."
           draft: false
@@ -55,7 +54,6 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: chrome-extension.zip
-          #asset_name: chrome-extension.zip
           asset_name: ${{ env.ZIP_FILE }}
           asset_content_type: application/zip
 
@@ -63,8 +61,6 @@ jobs:
   update-readme:
     runs-on: ubuntu-24.04
     steps:
-      - name: Update the README with Release link
-        Download the extension Release
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
