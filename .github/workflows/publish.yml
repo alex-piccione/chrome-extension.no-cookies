@@ -10,8 +10,8 @@ on:
 
 env:
   EXTENSION_ID: bpfohppedganilogpplkomnjlleijibp
-  VERSION: "25.2.18-alpha"  
-  ZIP_FILE: extension-25.2.18-alpha.zip
+  VERSION: "25.2.21-alpha"  
+  ZIP_FILE: extension-25.2.21-alpha.zip
 
 jobs:
   zip:
