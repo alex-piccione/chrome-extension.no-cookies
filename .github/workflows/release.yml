@@ -8,7 +8,7 @@ on:
 
 env: 
   VERSION: "25.2.18.${{ github.run_number }}-alpha"  
-  ZIP_FILE: extension-25.2.18.${{ github.run_number }}-alpha.zip
+  ZIP_FILE: Annouance-Remover-25.2.18.${{ github.run_number }}-alpha.zip
 
 jobs:
   build-and-release:
