@@ -72,7 +72,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo get latest release URL
-          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "chrome-extension.zip") | .browser_download_url')
+        # RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "chrome-extension.zip") | .browser_download_url')
+          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.ZIP_FILE }}") | .browser_download_url')          
           echo "Release URL: $RELEASE_URL"
           echo "Updating README.md with release link..."
           sed -i "s@Download the extension Release@[Download the extension Release]($RELEASE_URL)@g" README.md
