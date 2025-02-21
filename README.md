@@ -13,7 +13,7 @@ Open the browser Extensions Manager panel (for Chrome you can use the URL <"chro
 Enable the _Developer Mode_.  
 With _Developer Mode_ **on**, you can use the "Load unpacked" command and point to the folder where you extracted this extension.  
 Done.  
-If you are already in a page with opened Cookies settings panels, you need to reload it (CTRL+R).
+If you are already in a page with opened Cookies settings panels, you need to reload the page (CTRL+R) to see the extension in action.
   
 ### Known websites where the extension does not work
 
