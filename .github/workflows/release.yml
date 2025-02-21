@@ -13,7 +13,6 @@ env:
 jobs:
   build-and-release:
     runs-on: ubuntu-24.04
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -42,11 +41,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ github.run_number }}
+          #tag_name: v${{ github.run_number }}      
           release_name: Chrome Extension Release v${{ env.VERSION }}
-          body: "This release contains the latest version of the Chrome extension."
+          body: "This release contains the ${{ env.VERSION }} of the Chrome extension."
           draft: false
-          prerelease: false
+          prerelease: true
 
       # Upload the zip file to the release
       - name: Upload Release Asset
@@ -59,3 +58,29 @@ jobs:
           #asset_name: chrome-extension.zip
           asset_name: ${{ env.ZIP_FILE }}
           asset_content_type: application/zip
+
+
+  update-readme:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Update the README with Release link
+        Download the extension Release
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Update README with Release link
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo get latest release URL
+          RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "chrome-extension.zip") | .browser_download_url')
+          echo "Release URL: $RELEASE_URL"
+          echo "Updating README.md with release link..."
+          sed -i "s|Download the extension Release|[Download the extension Release]($RELEASE_URL)|" README.md
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions"
+          git add README.md
+          git commit -m "Update README with latest release link"
+          git push origin main
