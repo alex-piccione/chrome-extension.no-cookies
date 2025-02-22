@@ -13,54 +13,52 @@ export default {
     },
     {
       url: "reddit.com",
-      actions: [{ remove_element: "shreddit-dynamic-ad-link", repeat: "1000000 times, every 1500 ms" }]
+      actions: [{remove_element: "shreddit-dynamic-ad-link", repeat: "1000000 times, every 1500 ms" }]
     },    
     {
       url :"moto.it",
       note: "it does not work when open the page inbackground. I don't know why.",
       actions: [
-        { remove_element: "div#iubenda-cs-banner", repeat: "30 times, every 500 ms"},
-        { remove_element: "div.app-masthead", repeat: "5 times, every 500 ms"},
-        { remove_emenet: "div#app-checkext-template", repeat: "20 times, every 500ms"}
+        {remove_element: "div#iubenda-cs-banner", repeat: "30 times, every 500 ms"},
+        {remove_element: "div.app-masthead", repeat: "5 times, every 500 ms"},
+        {remove_emenet: "div#app-checkext-template", repeat: "20 times, every 500ms"}
       ]
     },
     {
       url: "stackify.com",
-      actions: [{ remove_element: "div#CybotCookiebotDialog" }],
+      actions: [{remove_element: "div#CybotCookiebotDialog" }],
     },
     {
       url: "aranzulla.it",
-      actions: [
-        { remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"  },
-      ],
+      actions: [{remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"}],
     },
     {
       url: "blablacar.it",
-      actions: [{ remove_element: "div#didomi-popup", repeat: "3 times, every 500 ms" }],
+      actions: [{remove_element: "div#didomi-popup", repeat: "3 times, every 500 ms" }],
     },
     {
       url: "coindesk.com",
-      actions: [{ remove_element: "div#CybotCookiebotDialog" }],
+      actions: [{remove_element: "div#CybotCookiebotDialog" }],
     },
     {
       url: "itsmycode.com",
-      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+      actions: [{remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     {
       url: "hsbc.co.uk",
-      actions: [{ remove_element: "div#__tealiumGDPRecModal", repeat: "2 times, every 300 ms" }],
+      actions: [{remove_element: "div#__tealiumGDPRecModal", repeat: "2 times, every 300 ms" }],
     },
     {
       url: "appdividend.com",
-      actions: [{ remove_element: "div#ez-cookie-dialog-wrapper" }],
+      actions: [{remove_element: "div#ez-cookie-dialog-wrapper" }],
     },
     {
       url: "spguides.com",
-      actions: [{ remove_element: "div#gdpr-consent-tool-wrapper" }],
+      actions: [{remove_element: "div#gdpr-consent-tool-wrapper" }],
     },
     {
       url: "cyberciti.biz",
-      actions: [{ remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" }],
+      actions: [{remove_element: "div.fc-consent-root", repeat: "3 times, every 500 ms" }],
     },
     {
       url: "akashmittal.com",
