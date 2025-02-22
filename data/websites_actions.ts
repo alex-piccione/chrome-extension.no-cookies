@@ -250,6 +250,10 @@ export default {
     {
       url: "repubblica.it",
       actions: [{remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"}]
+    },
+    {
+      url: "handymansworld.net",
+      actions: [{remove_element: "div[data-name='mediavine-gdpr-cmp']", repeat: "15 times, every 500 ms"}]
     }
   ],
 }
