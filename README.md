@@ -40,11 +40,17 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 ### Build
 
 Code is in TypeScript and requires to be builded.  
-``tsc ...`` uses teh global installed TypeScript, 
+``tsc ...`` uses the global installed TypeScript, 
 while ``npx tsc`` will use the library from node_modules.  
   
-We use difefrent source file and imports, so code needs to be build to create modules.  
-Parsel is simple and requires zero configuration , so we use it instead of the more complete  Webpack.  
+We use different source file and imports, so code needs to be build to create modules.  
+_Parsel_ is simple and requires zero configuration, so we use it instead of the more complete _Webpack_.  
+
+### Local tested
+
+Run the ``./build.sh`` script.  
+It creates the Chrome extension "unpacked" in the _/dist_ folder.  
+In Chrome add the unpacked extension simply pointing to that directory.  
 
 ### Chrome Extension publication
 

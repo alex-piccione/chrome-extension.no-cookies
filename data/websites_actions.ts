@@ -197,14 +197,9 @@ export default {
       actions: [{remove_element: "div.fc-consent-root", repeat: "5 times, every 500 ms"}]
     },
     {
-      url: "dnschecker.org",
-      actions: [{remove_element: "div#sp_message_container_1117104", repeat: "5 times, every 500 ms"}]
-    },
-    {
       url: "ricette.giallozafferano.it", actions: [
         {remove_element: "div#iubenda-cs-banner", repeat: "5 times, every 500 ms"},
-        {remove_class_from_body: "cp-banner-visible"}
-      ]
+        {remove_class_from_body: "cp-banner-visible"}]
     },
     {
       url: "repubblica.it",
@@ -213,6 +208,15 @@ export default {
     {
       url: "handymansworld.net",
       actions: [{remove_element: "div[data-name='mediavine-gdpr-cmp']", repeat: "15 times, every 500 ms"}]
+    },
+    {
+      url: "bbc.com", actions: [
+        {remove_element: "div[id^='sp_message_container_']", repeat: "15 times, every 500 ms"},
+        {remove_iframes: null, repeat: "5 times, every 500 ms"}]
+    },    
+    {
+      url: "dnschecker.org",
+      actions: [{remove_element: "div[id^='sp_message_container_']", repeat: "15 times, every 500 ms"}]
     }
   ],
 }
