@@ -46,7 +46,7 @@ while ``npx tsc`` will use the library from node_modules.
 We use different source file and imports, so code needs to be build to create modules.  
 _Parsel_ is simple and requires zero configuration, so we use it instead of the more complete _Webpack_.  
 
-### Local tested
+### How to test locally
 
 Run the ``./build.sh`` script.  
 It creates the Chrome extension "unpacked" in the _/dist_ folder.  

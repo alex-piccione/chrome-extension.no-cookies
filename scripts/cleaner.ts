@@ -1,7 +1,7 @@
 import { Config, Action, RemoveElement, isRemoveElement, isRestoreScrolling, isRemoveClassFromHtml, isRemoveClassFromBody, isRemoveIFrames, isRemoveScripts } from "./interfaces"
 
 interface Repeat {
-  times: number,
+  times: number|null,
   delay?: number /* milliseconds */
 }
 
@@ -33,7 +33,7 @@ const cleaner = {
       }
 
       // some websites keep adding the ads or they came out again when user scroll the page
-      if (++count < repeat.times) {
+      if (repeat.times === null || ++count < repeat.times) {
         log(`repeat removeElement ${count}`)
         setTimeout(() => removeElement(siteUrl, query, repeat, count), repeat.delay)
       }
@@ -44,7 +44,6 @@ const cleaner = {
       const count = iframes.length
       log(`removeIframes found ${count} iframes`)
       
-      // Convert NodeList to Array and use forEach instead of for...in
       Array.from(iframes).forEach((iframe: HTMLIFrameElement) => {
         try {
           if (iframe.parentElement) iframe.parentElement.removeChild(iframe)
@@ -79,7 +78,7 @@ const cleaner = {
       log(`Remove Class From Html, class: ${className} (#${count})`)
       document.querySelector("html")?.classList.remove(className)
 
-      if (++count < repeat.times) {
+      if (repeat.times === null || ++count < repeat.times) {
         setTimeout(() => removeClassFromHtml(className, repeat, count), repeat.delay)
       }
     }
@@ -88,13 +87,13 @@ const cleaner = {
       log(`Remove Class From Body, class: ${className} (#${count})`)
       document.querySelector("body")?.classList.remove(className);
 
-      if (++count < repeat.times) {
+      if (repeat.times === null || ++count < repeat.times) {
         setTimeout(() => removeClassFromBody(className, repeat, count), repeat.delay)
       }
     }
     
     // remove style "overflow:hidden" from HTML and BODY elements
-    const restoreScrolling = (): void => {
+    const restoreScrolling = (repeat:Repeat, count = 0): void => {
       const html = document.querySelector("html") as HTMLHtmlElement
       const body = document.querySelector("body") as HTMLBodyElement
   
@@ -102,6 +101,11 @@ const cleaner = {
       html.style.overflowX = "inherit"
 
       body.style.overflow = "inherit"
+
+      // infinite loop becaause usually the website adds the block again
+      if (repeat.times === null || ++count < repeat.times) {
+        setTimeout(() => restoreScrolling(repeat, count), repeat.delay)
+      }
     }
 
     /*  Execute Actions for the specific website (if defined) and the  common ones */
@@ -122,20 +126,44 @@ const cleaner = {
 
       if (action.repeat) {
         try {
-          const regex = "([\\d]*) times[,\\s]*every[\\s]([\\d]*)[\\s]*ms"
-          const matches = new RegExp(regex).exec(action.repeat)
-          if (matches)
-          {
-            repeat.times = parseInt(matches[1])
-            repeat.delay = matches.length > 2 ? parseInt(matches[2]) : 0
-          }          
+          const parts = action.repeat.split(", every")
+          if (parts.length == 2) {
+            if(parts[0].trim() === "forever") {
+              repeat.times = null
+            }
+            else {
+              let matches = new RegExp("([\\d]*) times").exec(parts[0])
+              if (matches)
+                repeat.times = parseInt(matches[1])
+              else
+                throw new Error(`Invalid number of times@ "${parts[0]}"`)              
+
+              matches = new RegExp("[\\s]([\\d]*)[\\s]*ms").exec(parts[1])
+              if (matches)
+                repeat.delay = parseInt(matches[1]) 
+              else 
+                throw new Error(`Invalid delay: "${parts[1]}"`)
+            }
+            /*
+            const delay = parseInt(parts[1].trim())
+            const regex = "([\\d]*) times[,\\s]*every[\\s]([\\d]*)[\\s]*ms"
+            const matches = new RegExp(regex).exec(action.repeat)
+            if (matches)
+            {
+              repeat.times = parseInt(matches[1])
+              repeat.delay = matches.length > 2 ? parseInt(matches[2]) : 0
+            }   */
+          } 
+          else 
+            log(`Invalid repeat string "${action.repeat}". Expected format: "X times, every Y ms" or "forever, every Y ms"`)
+       
         } catch (err) {
           console.error(`Failed to parse repeat string "${action.repeat}". ${err}`)
         }
       }
 
       if (isRemoveElement(action)) removeElement(siteUrl, action.remove_element, repeat)
-      else if (isRestoreScrolling(action)) restoreScrolling()
+      else if (isRestoreScrolling(action)) restoreScrolling( {times: null, delay: 1000} )
       else if (isRemoveClassFromHtml(action)) removeClassFromHtml(action.remove_class_from_html, repeat)
       else if (isRemoveClassFromBody(action)) removeClassFromBody(action.remove_class_from_body, repeat)
       else if (isRemoveIFrames(action)) removeIFrames()

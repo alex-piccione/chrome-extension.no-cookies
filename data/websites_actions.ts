@@ -1,3 +1,5 @@
+import { isRemoveElement } from "../scripts/interfaces";
+
 export default {
   version: "1.0",
   sites: [
@@ -217,6 +219,17 @@ export default {
     {
       url: "dnschecker.org",
       actions: [{remove_element: "div[id^='sp_message_container_']", repeat: "15 times, every 500 ms"}]
+    },
+    {
+      url: "screenrant.com",
+      actions: [
+        {remove_element: "div[class^='a__sc-np']", repeat: "forever, every 1000 ms"},
+        {remove_iframes: null, repeat: "5 times, every 500 ms"}]
+    },
+    {
+      url: "gsmarena.com",
+      actions: [{ remove_element: "div#uniccmp", repeat: "15 times, every 500 ms" }]
     }
+
   ],
 }

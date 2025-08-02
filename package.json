@@ -4,8 +4,8 @@
     "build": "parcel build scripts/content.ts --dist-dir dist/scripts --no-source-maps"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.304",
-    "parcel": "^2.13.3",
-    "typescript": "^5.7.3"
+    "@types/chrome": "^0.0.317",
+    "parcel": "^2.14.4",
+    "typescript": "^5.8.3"
   }
 }
