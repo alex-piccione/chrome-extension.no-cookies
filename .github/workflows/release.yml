@@ -21,7 +21,7 @@ jobs:
         id: versioning
         run: | 
           # generate local version in this step
-          FULL_VERSION=$(date +'%y.%-m.%-d')-${{ github.run_number }}
+          FULL_VERSION=$(date +'%y.%-m.%-d').${{ github.run_number }}
 
           # create OUTPUT variables for next steps
           echo "VERSION=$FULL_VERSION" >> $GITHUB_OUTPUT
