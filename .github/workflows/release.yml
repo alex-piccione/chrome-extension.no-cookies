@@ -47,10 +47,11 @@ jobs:
           mkdir -p dist/images && cp -r images/* dist/images/
 
       - name: Zip the extension
-        # have to move inside the folder to avoid having it in the zip
-        run: cd dist && zip -r chrome-extension.zip *
-        env:
-          ZIP_FILE: chrome-extension.zip
+        
+        run: |
+          # move inside the folder to avoid having it in the zip
+          cd dist
+          zip -r chrome-extension.zip *
 
       # Create a release and capture upload URL
       - name: Create Release
@@ -73,5 +74,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: chrome-extension.zip
-          asset_name: ${{ env.ZIP_FILE }}
+          asset_name: chrome-extension_no-cookies_${{ steps.create_release.outputs.upload_url }}.zip
           asset_content_type: application/zip
