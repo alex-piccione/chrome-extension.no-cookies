@@ -10,6 +10,7 @@ export default {
         {remove_element: "div#onetrust-consent-sdk", repeat: "15 times, every 500 ms"},
         {remove_element: "div#ez-cmpv2-container", repeat: "15 times, every 500 ms"},
         {remove_element: "div#qc-cmp2-container", repeat: "15 times, every 500 ms"},
+        {remove_element: "div#iubenda-cs-banner", repeat: "15 times, every 500 ms"},        
         {restore_scrolling: null }
       ]      
     },
