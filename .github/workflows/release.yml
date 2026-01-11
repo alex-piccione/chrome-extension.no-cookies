@@ -7,8 +7,9 @@ on:
   workflow_dispatch:  # Allows manual triggering of the workflow
 
 env: 
-  VERSION: "25.2.21.${{ github.run_number }}-alpha"  
-  ZIP_FILE: Annoyance-Remover-25.2.21.${{ github.run_number }}-alpha.zip
+  #VERSION: "25.2.21.${{ github.run_number }}-alpha"  
+  #ZIP_FILE: Annoyance-Remover-25.2.21.${{ github.run_number }}-alpha.zip
+  ZIP_FILE: Annoyance-Remover-VERSION.zip
   LINK_TEXT: Download the extension ZIP
 
 jobs:
@@ -17,6 +18,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Create Version
+        id: versioning
+        run: | 
+          # generate local version in this step
+          FULL_VERSION=$(date +'%y.%-m.%-d')-${{ github.run_number }}
+
+          # create OUTPUT variables for next steps
+          echo "VERSION=$FULL_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Update version in manifest file
+        run: |
+          VERSION=${{ steps.versioning.outputs.VERSION }}
+          
+          BLENDER_VERSION=${{ steps.versioning.outputs.BLENDER_VERSION }}
+          sed -i "s/__VERSION__/$VERSION/" manifest.json          
 
       - name: Build
         run: |
@@ -42,9 +59,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with: 
-          tag_name: ${{ env.VERSION }}
-          release_name: Chrome Extension Release v${{ env.VERSION }}
-          body: "This release contains the ${{ env.VERSION }} of the Chrome extension."
+          tag_name: ${{ steps.versioning.outputs.VERSION }}
+          release_name: Chrome Extension Release v${{ steps.versioning.outputs.VERSION }}
+          body: "This release contains the $${{ steps.versioning.outputs.VERSION }} of the Chrome extension."
           draft: false
           prerelease: true
 
@@ -58,43 +75,3 @@ jobs:
           asset_path: chrome-extension.zip
           asset_name: ${{ env.ZIP_FILE }}
           asset_content_type: application/zip
-
-  update-readme:
-    runs-on: ubuntu-24.04
-    needs: build-and-release
-    steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-    #  - name: Debug Release Info
-    #    env:
-    #      GH_TOKEN: ${{ github.token }}
-    #    run: |
-    #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.'
-    #      gh api "/repos/${{ github.repository }}/releases/latest" | jq '.assets'
-
-    #  - name: Get Release URL
-    #    env:
-    #      GH_TOKEN: ${{ github.token }}
-    #    run: |
-    #      RELEASE_URL=$(gh api "/repos/${{ github.repository }}/releases/latest" --jq '.assets[] | select(.name == "${{ env.VERSION }}") | .browser_download_url')
-    #      echo "RELEASE_URL=${RELEASE_URL}" >> $GITHUB_ENV
-    #      echo "RELEASE_URL=${RELEASE_URL}"
-    #      echo "### RELEASE_URL: ${RELEASE_URL}" >> $GITHUB_STEP_SUMMARY
-
-      - name: Update README with Release link
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          echo get latest release URL 
-          ZIP_URL="https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/${{ env.VERSION }}/${{ env.ZIP_FILE }}"          
-          echo "Release ZIP URL: $ZIP_URL"
-          echo "Updating README.md with release link..."
-          sed -i "s@\[${{ env.LINK_TEXT}}\]\(.*\)@[${{ env.LINK_TEXT}}]($ZIP_URL)@" README.md
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "GitHub Actions"
-          git add README.md
-          git commit -m "Update README with latest release link"
-          git push origin main
