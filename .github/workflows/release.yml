@@ -49,7 +49,7 @@ jobs:
       - name: Zip the extension
         
         run: |
-          # move inside the folder to avoid having it in the zip
+          # move inside the folder to avoid having it in the zip and create the artifact in the root
           cd dist
           zip -r ../chrome-extension.zip *
 
@@ -62,7 +62,7 @@ jobs:
         with: 
           tag_name: ${{ steps.versioning.outputs.VERSION }}
           release_name: Chrome Extension Release v${{ steps.versioning.outputs.VERSION }}
-          body: "This release contains the $${{ steps.versioning.outputs.VERSION }} of the Chrome extension."
+          body: "This release contains the ${{ steps.versioning.outputs.VERSION }} of the Chrome extension."
           draft: false
           prerelease: true
 
