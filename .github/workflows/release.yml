@@ -3,12 +3,10 @@ name: Create Release with ZIP
 on:
   push:
     branches:
-      - release  # Trigger workflow on pushes to the release branch
+      - release       # Trigger workflow on pushes to the release branch
   workflow_dispatch:  # Allows manual triggering of the workflow
 
 env: 
-  #VERSION: "25.2.21.${{ github.run_number }}-alpha"  
-  #ZIP_FILE: Annoyance-Remover-25.2.21.${{ github.run_number }}-alpha.zip
   ZIP_FILE: Annoyance-Remover-VERSION.zip
   LINK_TEXT: Download the extension ZIP
 
@@ -33,7 +31,11 @@ jobs:
           VERSION=${{ steps.versioning.outputs.VERSION }}
           
           BLENDER_VERSION=${{ steps.versioning.outputs.BLENDER_VERSION }}
-          sed -i "s/__VERSION__/$VERSION/" manifest.json          
+          sed -i "s/__VERSION__/$VERSION/" manifest.json   
+          
+      - name: Print version name
+        run: |
+          echo "### Version: ${{ steps.versioning.outputs.VERSION }}" >> $GITHUB_STEP_SUMMARY
 
       - name: Build
         run: |
@@ -46,8 +48,7 @@ jobs:
           mkdir -p dist/pages && cp -r pages/* dist/pages/
           mkdir -p dist/images && cp -r images/* dist/images/
 
-      - name: Zip the extension
-        
+      - name: Zip the extension        
         run: |
           # move inside the folder to avoid having it in the zip and create the artifact in the root
           cd dist
@@ -62,7 +63,7 @@ jobs:
         with: 
           tag_name: ${{ steps.versioning.outputs.VERSION }}
           release_name: Chrome Extension Release v${{ steps.versioning.outputs.VERSION }}
-          body: "This release contains the ${{ steps.versioning.outputs.VERSION }} of the Chrome extension."
+          body: "This release contains the version ${{ steps.versioning.outputs.VERSION }} of the Chrome extension."
           draft: false
           prerelease: true
 
