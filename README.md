@@ -12,7 +12,7 @@ Not yet published on Chrome Web Store (it is a nightmare to do it).
 [Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/25.2.21.38-alpha/Annoyance-Remover-25.2.21.38-alpha.zip)  
 (if link does not work get it manually: <https://github.com/alex-piccione/chrome-extension.no-cookies/releases>)
   
-Open the browser Extensions Manager panel (for Chrome: (chrome://extensions/) ).  
+Open the browser Extensions Manager panel (for Chrome: [chrome://extensions](chrome://extensions) ).  
 Enable the _Developer Mode_.  
 With _Developer Mode_ **on**, you can use the "Load unpacked" command and point to the folder where you extracted this extension.  
 Done.  
