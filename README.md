@@ -9,7 +9,7 @@ Not yet published on Chrome Web Store (it is a nightmare to do it).
 
 ## How to install?
 
-[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/releases/download/25.2.21.38-alpha/Annoyance-Remover-25.2.21.38-alpha.zip)  
+[Download the extension ZIP](https://github.com/alex-piccione/chrome-extension.no-cookies/releases)  
 (if link does not work get it manually: <https://github.com/alex-piccione/chrome-extension.no-cookies/releases>)
   
 Open the browser Extensions Manager panel (for Chrome: [chrome://extensions](chrome://extensions) ).  
