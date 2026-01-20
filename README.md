@@ -37,14 +37,22 @@ Please, [open a request](https://github.com/alex-piccione/chrome-extension.no-co
 
 ## For developers
 
+### Setup
+
+`npm install`
+
 ### Build
+
+`npm run build`
+
+--- 
 
 Code is in TypeScript and requires to be builded.  
 ``tsc ...`` uses the global installed TypeScript, 
 while ``npx tsc`` will use the library from node_modules.  
   
 We use different source file and imports, so code needs to be build to create modules.  
-_Parsel_ is simple and requires zero configuration, so we use it instead of the more complete _Webpack_.  
+_Parcel_ is simple and requires zero configuration, so we use it instead of the more complete _Webpack_.  
 
 ### How to test locally
 
