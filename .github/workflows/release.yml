@@ -7,7 +7,6 @@ on:
   workflow_dispatch:  # Allows manual triggering of the workflow
 
 env: 
-  ZIP_FILE: Annoyance-Remover-VERSION.zip
   LINK_TEXT: Download the extension ZIP
 
 jobs:
@@ -21,16 +20,14 @@ jobs:
         id: versioning
         run: | 
           # generate local version in this step
-          FULL_VERSION=$(date +'%y.%-m.%-d').${{ github.run_number }}
+          DATE_VERSION=$(date +'%y.%-m.%-d').${{ github.run_number }}
 
           # create OUTPUT variables for next steps
-          echo "VERSION=$FULL_VERSION" >> $GITHUB_OUTPUT
+          echo "VERSION=$DATE_VERSION" >> $GITHUB_OUTPUT
 
       - name: Update version in manifest file
         run: |
           VERSION=${{ steps.versioning.outputs.VERSION }}
-          
-          BLENDER_VERSION=${{ steps.versioning.outputs.BLENDER_VERSION }}
           sed -i "s/__VERSION__/$VERSION/" manifest.json   
           
       - name: Print version name
